@@ -6,6 +6,8 @@ require 'mysql2'
 require 'redcarpet'
 require_relative 'models/article'
 require_relative 'models/image'
+require_relative 'models/users'
+require 'securerandom'
 
 
 # DB設定ファイルの読み込み
@@ -17,7 +19,7 @@ class Index < Sinatra::Base
 
   register WillPaginate::Sinatra
 
-  configure do
+  configure :development do
     register Sinatra::Reloader
   end
 
@@ -133,9 +135,29 @@ class Index < Sinatra::Base
     end
   end
 
-  # 記事に使う画像を取得
-  get '/v1/image' do
-    print 'bbbb';
+  get '/v1/register' do
+    name = params[:name]
+    password = params[:password]
+    user = User.new(name: name, password: password, password_confirmation: password, access_key: SecureRandom.hex(10), access_secret_key: SecureRandom.hex(10))
+    user.save
+    return {
+      access_key: user.access_key,
+      access_secret_key: user.access_secret_key,
+    }.to_json
   end
 
+  # ログイン処理
+  post '/v1/login' do
+    name = params[:name]
+    password = params[:password]
+    return 401 unless name and password
+
+    user = User.find_by(name: name)
+    return 401 unless user.authenticate(password)
+
+    return {
+      access_key: user.access_key,
+      access_secret_key: user.access_secret_key,
+    }.to_json
+  end
 end
