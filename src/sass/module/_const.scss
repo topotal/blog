@@ -1,0 +1,17 @@
+$MARGIN: 40px;
+$GREEN: #2A8792;
+$BLUE: #5AC1EF;
+$BLACK: #333;
+$GRAY: #CCC;
+$WHITE: #FFF;
+
+$CONTENT_WIDTH: 1120px;
+$MIN_WIDTH: 800px;
+$MAX_WIDTH: $MIN_WIDTH - 1;
+
+@mixin BORDER_BOX() {
+  box-sizing:border-box;/* borderとpaddingをwidthに含める */
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+}

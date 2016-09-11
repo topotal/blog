@@ -1,0 +1,27 @@
+<% @articles.each do |article| %>
+  <article class="articlesItem">
+    <header>
+      <a href="/dialy?id=<%= article.id %>">
+        <h1><%= article.title %></h1>
+      </a>
+      <ul>
+        <li class="time">
+          <i class="fa fa-calendar"></i>
+          <span><%= article.created_at.strftime("%Y-%m-%d %a") %></span>
+        </li>
+      </ul>
+    </header>
+    <a class="frame" href="/dialy?id=<%= article.id %>">
+      <img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png">
+    </a>
+    <p><%= article.content %></p>
+    <a href="/dialy?id=<%= article.id %>" class="detail_button">続きを見る</a>
+  </article>
+<% end %>
+<%= will_paginate(
+  @articles,
+  :inner_window => 1,
+  :outer_window => 1,
+  :previous_label => '前へ',
+  :next_label => '次へ')
+%>

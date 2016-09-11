@@ -1,0 +1,59 @@
+.content {
+  font-size: 1em;
+
+  // タイトル1
+  h1 {
+    font-size: 1.9em;
+    font-weight: normal;
+    border-bottom: 3px solid #CCC;
+    margin-top: 2.5em;
+  }
+
+  // タイトル2
+  h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+    border-bottom: 2px solid #CCC;
+    margin-top: 1.3em;
+  }
+
+  a {
+    color: $BLUE;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  pre {
+    font-size: .8em;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+
+    th {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      padding: 6px 13px;
+      border: 1px solid #ddd;
+    }
+
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
+
+    tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+  }
+}

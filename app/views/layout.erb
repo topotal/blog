@@ -1,0 +1,31 @@
+<% articleTitle = @article ? @article.title + " - " : "" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= articleTitle %>sawa-zen.com</title>
+  <meta content="鼻たれWebクリエイターsawa-zen" name="description">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- font-->
+  <link href="http://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- CSS-->
+  <link href="/css/normalize.css" rel="stylesheet">
+
+  <!-- JS-->
+  <script src="bundle.js"></script>
+
+  <!-- highlight.js -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/monokai_sublime.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>
+

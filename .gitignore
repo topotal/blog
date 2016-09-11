@@ -1,0 +1,8 @@
+node_modules/
+public/bundle.js
+public/css/*
+public/img/upload/*
+config/database.yml
+npm-debug.log
+vendor
+!.gitkeep

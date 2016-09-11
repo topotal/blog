@@ -1,0 +1,112 @@
+article.articlesItem {
+  margin-top: $MARGIN;
+  margin-bottom: $MARGIN * 2;
+
+  header {
+    a {
+      color: $BLACK;
+      text-decoration: none;
+
+      &:hover{
+        color: $GRAY;
+      }
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: normal;
+      line-height: 1.1;
+      border-bottom: 5px $BLUE solid;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+
+    ul {
+      overflow: hidden;
+      padding: 0;
+      list-style: none;
+
+      i {
+        margin-right: 5px;
+      }
+
+      li {
+        font-size: 0.8em;
+        margin-right: 20px;
+        float: left;
+      }
+
+      li.hateb, li.facebook {
+        float: right;
+        height: 21px;
+        margin-right: 10px;
+      }
+
+      li.twitter {
+        float: right;
+        height: 21px;
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .detail_button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: $BLUE 2px solid;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    color: $BLUE;
+    text-decoration: none;
+
+    &:hover {
+      color: #FFF;
+      background-color: $BLUE;
+    }
+
+  }
+
+  @media only screen and (max-width: $MAX_WIDTH) {
+    header a h1 {
+      font-size: 1.5em;
+    }
+  }
+
+}
+
+
+.pagination {
+  margin: 0 auto $MARGIN;
+  text-align: center;
+
+  em {
+    background-color: $GRAY;
+  }
+
+  a {
+    background-color: $BLUE;
+
+    &:hover {
+      background-color: $GREEN;
+    }
+
+  }
+
+  em, a {
+    color: #FFF;
+    font-style: normal;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .disabled {
+    display: none;
+  }
+
+}
+

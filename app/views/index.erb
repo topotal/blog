@@ -1,0 +1,21 @@
+<link href="/css/index.css" rel="stylesheet">
+<%= erb :"module/_nav" %>
+<div id="wrapper">
+  <header id="header">
+    <div class="inner">
+      <img src="/img/h1_icon.png" width="237" height="160">
+      <h1>sawa-zen</h1>
+    </div>
+  </header>
+  <div id="content">
+    <div id="contentInner">
+      <div id="mainContent">
+        <%= erb :"module/_articles" %>
+      </div>
+    </div>
+    <aside id="aside">
+      <%= erb :"module/_aside" %>
+    </aside>
+  </div>
+</div>
+<%= erb :"module/_footer" %>

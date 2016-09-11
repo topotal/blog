@@ -1,0 +1,24 @@
+<%
+id = nil
+title = ""
+content = ""
+
+if @article
+  id = @article.id
+  title = @article.title
+  content = @article.content
+end
+%>
+<link href="/css/index.css" rel="stylesheet">
+<div id="wrapper">
+  <div id="content">
+    <form action="/v1/article" method="post">
+      <input type="hidden" name="id" value="<%= id %>" />
+      <p>タイトル：<input type="text" name="title" size="40" value="<%= title %>"></p>
+      <p>キャッチ：<input type="text" name="catch" size="40" value="<%= title %>"></p>
+      <p>アイキャッチ：<input type="text" name="eye_catching" size="40" value="<%= title %>"></p>
+      <textarea name="content" rows="4" cols="40" wrap="off"><%= content %></textarea>
+      <p><input type="submit" value="送信" /></p>
+    </form>
+  </div>
+</div>
