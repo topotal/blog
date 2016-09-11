@@ -16,6 +16,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     backports (3.6.8)
+    bcrypt (3.1.11)
     builder (3.2.2)
     i18n (0.7.0)
     json (1.8.3)
@@ -50,6 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt
   mysql2 (~> 0.3.20)
   redcarpet
   sinatra
@@ -57,4 +59,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.5)
 
 BUNDLED WITH
-   1.11.2
+   1.12.3
