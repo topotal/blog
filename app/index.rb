@@ -53,7 +53,7 @@ class Index < Sinatra::Base
   end
 
   # 記事詳細ページ
-  get '/dialy' do
+  get '/diary' do
     markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       :fenced_code_blocks => true,
@@ -61,7 +61,7 @@ class Index < Sinatra::Base
     )
     @article = article(params[:id])
     @article.content = markdown.render(@article.content)
-    erb :dialy
+    erb :diary
   end
 
   # 記事編集ページ
@@ -135,7 +135,7 @@ class Index < Sinatra::Base
     end
   end
 
-  get '/v1/register' do
+  post '/v1/register' do
     name = params[:name]
     password = params[:password]
     user = User.new(name: name, password: password, password_confirmation: password, access_key: SecureRandom.hex(10), access_secret_key: SecureRandom.hex(10))
