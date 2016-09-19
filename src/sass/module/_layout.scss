@@ -9,7 +9,7 @@ body {
   background-image: url('/img/background.png');
   background-size: 57px 57px;
   background-repeat: repeat;
-  background-color: $GREEN;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 
@@ -41,7 +41,7 @@ a.frame {
 
 
 #content {
-  margin: 100px auto 0;
+  margin: 0 auto;
   min-height: 100%;
   max-width: $CONTENT_WIDTH;
   overflow: hidden;

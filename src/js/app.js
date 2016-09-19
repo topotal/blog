@@ -42,12 +42,12 @@ class Main {
   _tick() {
     requestAnimationFrame(this._tick);
 
-    if(this._isTop) {
-      this._nav.hide();
-    }
-    else {
-      this._nav.show();
-    }
+    // if(this._isTop) {
+    //   this._nav.hide();
+    // }
+    // else {
+    //   this._nav.show();
+    // }
   }
 
 }
