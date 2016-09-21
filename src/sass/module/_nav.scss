@@ -2,17 +2,20 @@ nav {
   width: 100%;
   height: 60px;
   background-color: $BLACK;
-  box-shadow:rgba(0, 0, 0, 0.3) 0px 0px 6px 3px;
-  -webkit-box-shadow:rgba(0, 0, 0, 0.3) 0px 0px 6px 3px;
-  -moz-box-shadow:rgba(0, 0, 0, 0.3) 0px 0px 6px 3px;
   z-index: 1000;
   top: 0;
 
   .inner {
     height: 60px;
-    margin: 0 $MARGIN;
     color: $WHITE;
+    max-width: $CONTENT_WIDTH;
+    margin: 0 auto;
+    padding: 0 $MARGIN;
+    box-sizing: border-box;
     font-family: 'Marck Script', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
     a {
       float: left;

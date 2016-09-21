@@ -1,7 +1,7 @@
 <% @articles.each do |article| %>
   <article class="articlesItem">
     <header>
-      <a href="/dialy?id=<%= article.id %>">
+      <a href="/diary?id=<%= article.id %>">
         <h1><%= article.title %></h1>
       </a>
       <ul>
@@ -11,11 +11,11 @@
         </li>
       </ul>
     </header>
-    <a class="frame" href="/dialy?id=<%= article.id %>">
+    <a class="frame" href="/diary?id=<%= article.id %>">
       <img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png">
     </a>
     <p><%= article.content %></p>
-    <a href="/dialy?id=<%= article.id %>" class="detail_button">続きを見る</a>
+    <a href="/diary?id=<%= article.id %>" class="detail_button">続きを見る</a>
   </article>
 <% end %>
 <%= will_paginate(

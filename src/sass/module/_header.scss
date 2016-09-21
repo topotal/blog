@@ -1,0 +1,17 @@
+#header {
+  height: 450px;
+  position: relative;
+  color: #FFF;
+  text-align: center;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
+
+  img {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: auto;
+  }
+}
