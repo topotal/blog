@@ -6,10 +6,6 @@ body {
   min-width: 320px;
   line-height: 1.5;
   color: $BLACK;
-  background-image: url('/img/background.png');
-  background-size: 57px 57px;
-  background-repeat: repeat;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 
