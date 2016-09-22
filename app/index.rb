@@ -1,32 +1,27 @@
 require 'sinatra/base'
-require 'sinatra/reloader'
-require 'active_record'
-require 'will_paginate'
 require 'mysql2'
+require 'active_record'
+require "sinatra/activerecord"
+require 'will_paginate'
 require 'redcarpet'
+require 'securerandom'
 require_relative 'models/article'
 require_relative 'models/image'
 require_relative 'models/users'
-require 'securerandom'
-
-
-# DB設定ファイルの読み込み
-ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
-ActiveRecord::Base.establish_connection(:development)
-
 
 class Index < Sinatra::Base
 
   register WillPaginate::Sinatra
 
   configure :development do
+    require 'sinatra/reloader'
     register Sinatra::Reloader
   end
 
   set :public_folder, File.expand_path(
     File.join(root, '..', 'public')
   )
-
+  set :database_file, 'config/database.yml'
 
   ### メソッド ###
 

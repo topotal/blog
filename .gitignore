@@ -5,4 +5,5 @@ public/img/upload/*
 config/database.yml
 npm-debug.log
 vendor
+db/*.sqlite3
 !.gitkeep
