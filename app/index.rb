@@ -11,16 +11,15 @@ require_relative "models/users"
 
 class Index < Sinatra::Base
   register WillPaginate::Sinatra
+  register Sinatra::ActiveRecordExtension
 
   configure :development do
     require "sinatra/reloader"
     register Sinatra::Reloader
   end
 
-  set :public_folder, File.expand_path(
-    File.join(root, "..", "public")
-  )
-  set :database_file, "config/database.yml"
+  set :public_folder, File.expand_path("../../public", __FILE__)
+  set :database_file, File.expand_path("../../config/database.yml", __FILE__)
 
   def article(id)
     return nil if id.nil?
