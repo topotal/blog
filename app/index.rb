@@ -22,30 +22,20 @@ class Index < Sinatra::Base
   )
   set :database_file, "config/database.yml"
 
-  ### メソッド ###
-
-  # 記事取得
   def article(id)
-    if id.nil?
-      return nil
-    end
+    return nil if id.nil?
     Article.find id
   end
 
-  # 記事一覧取得
   def articles(page)
     Article.order("id DESC").page(page)
   end
 
-  ### ページ ###
-
-  # トップページ
   get "/" do
     @articles = articles(params[:page])
     erb :index
   end
 
-  # 記事詳細ページ
   get "/diary" do
     markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
@@ -57,21 +47,15 @@ class Index < Sinatra::Base
     erb :diary
   end
 
-  # 記事編集ページ
   get "/edit" do
-    puts params
     @article = article(params[:id])
     erb :edit
   end
 
-  # 画像アップロードページ
   get "/upload" do
     erb :upload
   end
 
-  ### API ###
-
-  # 記事一覧取得
   get "/v1/articles" do
     content_type :json, charset: "utf-8"
     return {
@@ -81,7 +65,6 @@ class Index < Sinatra::Base
     }.to_json
   end
 
-  # 記事取得
   get "/v1/article" do
     content_type :json, charset: "utf-8"
     return article(params[:id]).to_json
@@ -90,14 +73,12 @@ class Index < Sinatra::Base
   post "/v1/article" do
     content_type :json, charset: "utf-8"
     if params[:id].blank?
-      # 記事作成
       target = Article.create(
         title: params[:title].to_s,
         content: params[:content].to_s,
         eye_catching: params[:eye_catching]
       )
     else
-      # 記事の更新
       target = article(params[:id])
       target.update(
         title: params[:title].to_s,
@@ -112,18 +93,16 @@ class Index < Sinatra::Base
     }.to_json
   end
 
-  # 記事に使う画像を登録
   post "/v1/image" do
-    if params[:file]
-      access_path = "img/upload/#{params[:file][:filename]}"
-      save_path = "./public/" + access_path
-      File.open(save_path, "wb") do |f|
-        p params[:file][:tempfile]
-        f.write params[:file][:tempfile].read
-        Image.create(
-          url: access_path
-        )
-      end
+    return unless params[:file]
+    access_path = "img/upload/#{params[:file][:filename]}"
+    save_path = "./public/" + access_path
+    File.open(save_path, "wb") do |f|
+      p params[:file][:tempfile]
+      f.write params[:file][:tempfile].read
+      Image.create(
+        url: access_path
+      )
     end
   end
 
@@ -138,7 +117,6 @@ class Index < Sinatra::Base
     }.to_json
   end
 
-  # ログイン処理
   post "/v1/login" do
     name = params[:name]
     password = params[:password]
