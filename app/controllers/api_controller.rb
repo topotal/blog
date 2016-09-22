@@ -1,62 +1,9 @@
-require "sinatra/base"
-require "mysql2"
-require "active_record"
-require "sinatra/activerecord"
-require "will_paginate"
-require "redcarpet"
-require "securerandom"
-require_relative "models/article"
-require_relative "models/image"
-require_relative "models/users"
-
-class Index < Sinatra::Base
-  register WillPaginate::Sinatra
-  register Sinatra::ActiveRecordExtension
-
-  configure :development do
-    require "sinatra/reloader"
-    register Sinatra::Reloader
-  end
-
-  set :public_folder, File.expand_path("../../public", __FILE__)
-  set :database_file, File.expand_path("../../config/database.yml", __FILE__)
-
-  def article(id)
-    return nil if id.nil?
-    Article.find id
-  end
-
-  def articles(page)
-    Article.order("id DESC").page(page)
-  end
-
-  get "/" do
-    @articles = articles(params[:page])
-    erb :index
-  end
-
-  get "/diary" do
-    markdown = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      fenced_code_blocks: true,
-      tables: true
-    )
-    @article = article(params[:id])
-    @article.content = markdown.render(@article.content)
-    erb :diary
-  end
-
-  get "/edit" do
-    @article = article(params[:id])
-    erb :edit
-  end
-
-  get "/upload" do
-    erb :upload
+class ApiController < Base
+  before do
+    content_type :json, charset: "utf-8"
   end
 
   get "/v1/articles" do
-    content_type :json, charset: "utf-8"
     return {
       status: 200,
       total: Article.count,
@@ -65,12 +12,10 @@ class Index < Sinatra::Base
   end
 
   get "/v1/article" do
-    content_type :json, charset: "utf-8"
-    return article(params[:id]).to_json
+    Article.find_by_id(params[:id]).to_json
   end
 
   post "/v1/article" do
-    content_type :json, charset: "utf-8"
     if params[:id].blank?
       target = Article.create(
         title: params[:title].to_s,
@@ -78,7 +23,7 @@ class Index < Sinatra::Base
         eye_catching: params[:eye_catching]
       )
     else
-      target = article(params[:id])
+      target = Article.find_by_id(params[:id])
       target.update(
         title: params[:title].to_s,
         content: params[:content].to_s,
