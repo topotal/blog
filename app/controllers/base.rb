@@ -3,6 +3,9 @@ class Base < Sinatra::Base
   set :public_folder, File.expand_path("../../public", File.dirname(__FILE__))
   set :database_file, File.expand_path("config/database.yml", File.dirname(__FILE__))
 
+  enable :protection
+  enable :sessions
+
   register Sinatra::ActiveRecordExtension
 
   configure :development do
