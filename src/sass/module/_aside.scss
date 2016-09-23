@@ -5,7 +5,9 @@
   background-color: #EEE;
 
   h3 {
-    margin: 0 0 10px;
+    margin: 0 0 15px;
+    color: #888;
+    font-size: 0.9em;
   }
 
   p {
@@ -28,17 +30,5 @@
     .detail {
       font-size: 0.7em;
     }
-  }
-}
-
-#twitter-widget-0 {
-  margin-bottom: $MARGIN !important;
-}
-
-
-@media only screen and (max-width: $MAX_WIDTH) {
-  /* ツイート一覧削除 */
-  #twitter-widget-0 {
-    display: none !important;
   }
 }
