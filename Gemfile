@@ -10,12 +10,12 @@ gem "redcarpet"
 gem "bcrypt"
 gem "sinatra-activerecord", require: "sinatra/activerecord"
 gem "rake"
-gem "json_world"
+gem "json_world", require: "json_world"
 
 group :development do
   gem "sqlite3"
   gem "rspec"
   gem "rubocop"
   gem "onkcop"
-  gem "prmd"
+  gem "jdoc"
 end
