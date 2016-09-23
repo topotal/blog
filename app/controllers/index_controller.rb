@@ -1,4 +1,4 @@
-class IndexController < Base
+class IndexController < BaseController
   register WillPaginate::Sinatra
 
   get "/" do

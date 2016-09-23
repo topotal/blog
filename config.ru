@@ -1,7 +1,7 @@
 require 'bundler/setup'
 Bundler.require(:default)
 
-require "./app/controllers/base"
+require "./app/controllers/base_controller"
 require "./app/controllers/index_controller"
 require "./app/controllers/api_controller"
 

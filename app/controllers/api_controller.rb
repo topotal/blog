@@ -1,4 +1,4 @@
-class ApiController < Base
+class ApiController < BaseController
   before do
     content_type :json, charset: "utf-8"
   end
