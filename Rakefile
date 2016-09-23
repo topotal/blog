@@ -1,5 +1,6 @@
-require "sinatra/base"
-require "sinatra/activerecord"
+require 'bundler/setup'
+Bundler.require(:default)
+
 require "sinatra/activerecord/rake"
 
 namespace :db do

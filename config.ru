@@ -1,11 +1,5 @@
-require "sinatra"
-require "sinatra/base"
-require "mysql2"
-require "active_record"
-require "sinatra/activerecord"
-require "will_paginate"
-require "redcarpet"
-require "securerandom"
+require 'bundler/setup'
+Bundler.require(:default)
 
 require "./app/controllers/base"
 require "./app/controllers/index_controller"
