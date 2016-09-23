@@ -1,0 +1,95 @@
+{
+  "description": "Topotal API v1 interface document written in JSON Hyper Schema draft v4",
+  "links": [
+    {
+      "method": "GET",
+      "title": "{:href=>\"https://blog.topotal.com\", :rel=>\"self\"}"
+    }
+  ],
+  "properties": {
+    "users": {
+      "description": "A user object for topotal blog",
+      "links": [
+        {
+          "description": "User registration",
+          "href": "/api/v1/users/register",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "username": {
+                "example": "topotan",
+                "type": "string"
+              },
+              "password": {
+                "example": "p@ssw0rd",
+                "type": "string"
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "title": "register"
+        },
+        {
+          "description": "User information if authenticate",
+          "href": "/api/v1/users/login",
+          "method": "POST",
+          "rel": "self",
+          "schema": {
+            "properties": {
+              "username": {
+                "example": "topotan",
+                "type": "string"
+              },
+              "password": {
+                "example": "p@ssw0rd",
+                "type": "string"
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "title": "login"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "User id",
+          "example": 1,
+          "type": "integer"
+        },
+        "name": {
+          "description": "User name",
+          "example": "topotan",
+          "type": "string"
+        },
+        "access_key": {
+          "example": "5bf74f334a53a6636229",
+          "pattern": "[a-z0-9]{10}",
+          "type": "string"
+        },
+        "access_secret_key": {
+          "example": "9bf31d7c631aabf3ed72",
+          "pattern": "[a-z0-9]{10}",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "access_key",
+        "access_secret_key"
+      ],
+      "title": "User object"
+    }
+  },
+  "required": [
+    "users"
+  ],
+  "title": "Topotal blog API v1"
+}
