@@ -15,10 +15,17 @@ article.articlesItem {
     h1 {
       font-size: 2em;
       font-weight: normal;
-      line-height: 1.1;
-      border-bottom: 5px $BLUE solid;
+      line-height: 1.4;
       padding-bottom: 5px;
       margin-top: 0;
+
+      &:after {
+        content:"";
+        display:block;
+        height:4px;
+        width:100%;
+        background: -webkit-gradient(linear, left top, right top, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
+      }
     }
 
     ul {
