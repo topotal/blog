@@ -7,7 +7,7 @@ require "./app/controllers/api_controller"
 
 require "./app/models/article"
 require "./app/models/image"
-require "./app/models/users"
+require "./app/models/user"
 
 ROUTES = {
   "/" => IndexController,
