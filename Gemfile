@@ -11,9 +11,11 @@ gem "bcrypt"
 gem "sinatra-activerecord"
 gem "rake"
 gem "rspec"
+gem "json_world"
 
 group :development do
   gem "sqlite3"
   gem "rubocop"
   gem "onkcop"
+  gem "prmd"
 end
