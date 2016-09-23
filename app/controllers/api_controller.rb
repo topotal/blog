@@ -3,27 +3,27 @@ class ApiController < BaseController
     content_type :json, charset: "utf-8"
   end
 
-  get "/v1/articles" do
+  get "/v1/entries" do
     return {
       status: 200,
-      total: Article.count,
-      articles: Article.order("id DESC").paginate(per_page: 20, page: params[:page]),
+      total: Entry.count,
+      entries: Entry.order("id DESC").paginate(per_page: 20, page: params[:page]),
     }.to_json
   end
 
-  get "/v1/article" do
-    Article.find_by_id(params[:id]).to_json
+  get "/v1/entry" do
+    Entry.find_by_id(params[:id]).to_json
   end
 
-  post "/v1/article" do
+  post "/v1/entry" do
     if params[:id].blank?
-      target = Article.create(
+      target = Entry.create(
         title: params[:title].to_s,
         content: params[:content].to_s,
         eye_catching: params[:eye_catching]
       )
     else
-      target = Article.find_by_id(params[:id])
+      target = Entry.find_by_id(params[:id])
       target.update(
         title: params[:title].to_s,
         content: params[:content].to_s,
@@ -33,7 +33,7 @@ class ApiController < BaseController
 
     return {
       status: 200,
-      article: target,
+      entry: target,
     }.to_json
   end
 
