@@ -1,10 +1,10 @@
-<article class="articlesItem">
+<entry class="entriesItem">
   <header>
-    <h1><%= @article.title %></h1>
+    <h1><%= @entry.title %></h1>
     <ul>
       <li class="time">
         <i class="fa fa-calendar"></i>
-        <span><%= @article.created_at.strftime("%Y-%m-%d %a") %></span>
+        <span><%= @entry.created_at.strftime("%Y-%m-%d %a") %></span>
       </li>
       <li class="twitter">
         <a href="https://twitter.com/share" class="twitter-share-button"{count}>tweet</a>
@@ -18,9 +18,9 @@
     </ul>
   </header>
   <div class="content">
-    <%= @article.content %>
+    <%= @entry.content %>
   </div>
-</article>
+</entry>
 
 <!-- はてブ -->
 <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
