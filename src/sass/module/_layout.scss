@@ -9,33 +9,10 @@ body {
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 
-
-.clearfix:after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-
 #wrapper {
   margin-top: 45px;
   min-height: 100%;
 }
-
-a.frame {
-  display: block;
-  padding:7px;
-  border:1px solid #ccc;
-  background:#fff;
-  @include BORDER_BOX;
-
-  img {
-    width: 100%;
-    height: auto;
-    vertical-align:top;
-  }
-}
-
 
 #content {
   margin: 0 auto;
@@ -43,42 +20,19 @@ a.frame {
   max-width: $CONTENT_WIDTH;
   overflow: hidden;
   background-color: #FFF;
-  padding: 0 $MARGIN;
+  padding: $MARGIN;
+  display: flex;
   @include BORDER_BOX;
 
   #main {
+    width: 700px;
+    margin-right: 40px;
     min-height: 900px;
     overflow: hidden;
   }
 
   #aside {
-    padding-top: $MARGIN;
-  }
-}
-
-@media only screen and (min-width: $MIN_WIDTH) {
-  #main {
-    float: left;
-    width: 100%;
-    margin-right: -340px;
-
-    #mainContent {
-      margin-right: 340px;
-    }
-  }
-
-  #aside {
-    float: right;
+    min-width: 300px;
     width: 300px;
-  }
-}
-
-@media only screen and (max-width: $MAX_WIDTH) {
-  #content {
-    padding: 0 20px;
-
-    #aside {
-      padding-top: 0;
-    }
   }
 }
