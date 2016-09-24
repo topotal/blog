@@ -1,22 +1,6 @@
-<% @entries.each do |entry| %>
-  <entry class="entriesItem">
-    <header>
-      <a href="/diary?id=<%= entry.id %>">
-        <h1><%= entry.title %></h1>
-      </a>
-      <ul>
-        <li class="time">
-          <i class="fa fa-calendar"></i>
-          <span><%= entry.created_at.strftime("%Y-%m-%d %a") %></span>
-        </li>
-      </ul>
-    </header>
-    <a class="frame" href="/diary?id=<%= entry.id %>">
-      <img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png">
-    </a>
-    <p><%= entry.content %></p>
-    <a href="/diary/<%= entry.id %>" class="detail_button">続きを見る</a>
-  </entry>
+<% (1..9).each do |entry| %>
+  <article class="entriesItem">
+  </article>
 <% end %>
 <%= will_paginate(
   @entries,

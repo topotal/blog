@@ -46,7 +46,7 @@ a.frame {
   padding: 0 $MARGIN;
   @include BORDER_BOX;
 
-  #contentInner {
+  #main {
     min-height: 900px;
     overflow: hidden;
   }
@@ -57,7 +57,7 @@ a.frame {
 }
 
 @media only screen and (min-width: $MIN_WIDTH) {
-  #contentInner {
+  #main {
     float: left;
     width: 100%;
     margin-right: -340px;
