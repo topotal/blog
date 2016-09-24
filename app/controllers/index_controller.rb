@@ -2,29 +2,30 @@ class IndexController < BaseController
   register WillPaginate::Sinatra
 
   get "/" do
-    @articles = Article.order("id DESC").page(params[:page])
+    @entries = Entry.order("id DESC").page(params[:page])
     erb :index
   end
 
-  get "/diary/:id" do
+  get "/diary/:id" do |id|
     markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       fenced_code_blocks: true,
       tables: true
     )
-    @article = Article.find_by_id!(params[:id])
+    @entry = Entry.find_by_id!(id)
 
-    @article.content = markdown.render(@article.content)
+    @entry.content = markdown.render(@entry.content)
     erb :diary
   end
 
   get "/edit/" do
-    @article = Article.new
+    @entry = Entry.new
     erb :edit
   end
 
-  get "/edit/:id" do
-    @article = Article.find_by_id!(params[:id])
+  get "/edit/:id" do |id|
+    p id
+    @entry = Entry.find_by_id!(id)
     erb :edit
   end
 

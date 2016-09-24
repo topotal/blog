@@ -1,11 +1,11 @@
-require 'bundler/setup'
+require "bundler/setup"
 Bundler.require(:default)
 
 require "./app/controllers/base_controller"
 require "./app/controllers/index_controller"
 require "./app/controllers/api_controller"
 
-require "./app/models/article"
+require "./app/models/entry"
 require "./app/models/image"
 require "./app/models/user"
 
