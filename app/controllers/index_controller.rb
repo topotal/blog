@@ -6,7 +6,7 @@ class IndexController < BaseController
     erb :index
   end
 
-  get "/diary/:id" do |id|
+  get "/entry/:yyyy/:mm/:dd/:id" do |_yyyy, _mm, _dd, id|
     markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       fenced_code_blocks: true,
@@ -14,7 +14,7 @@ class IndexController < BaseController
     )
     @entry = Entry.find_by_id!(id)
 
-    @entry.content = markdown.render(@entry.content)
+    @entry.content = markdown.render(@entry.content) if @entry.content
     erb :diary
   end
 
