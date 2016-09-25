@@ -18,11 +18,10 @@
   }
 
   .title {
-    height: 45px;
     line-height: 45px;
     font-size: 1.7em;
     font-weight: normal;
-    margin: 0 0 15px 0;
+    margin: 0;
     color: $BLACK;
 
     &:after {
@@ -35,11 +34,37 @@
     }
   }
 
+  .detail {
+    list-style: none;
+    margin: 0 0 0 5px;
+    padding: 0;
+
+    .item {
+      display: inline-block;
+      line-height: 40px;
+      font-size: 0.8em;
+      margin-right: 15px;
+
+      &:before {
+        font-family: FontAwesome;
+        margin: 0 8px 0 0;
+      }
+    }
+
+    .date:before {
+      content: "\f073";
+    }
+
+    .author:before {
+      content: "\f007";
+    }
+  }
+
   .content {
     display: flex;
 
     .eyeCatch {
-      width: 240px;
+      min-width: 240px;
       height: 135px;
       text-align: center;
       box-sizing: border-box;
@@ -66,16 +91,9 @@
       }
     }
 
-    .date {
-      height: 30px;
-      line-height: 30px;
-      font-size: 0.8em;
-
-      &:before {
-        content: "\f073";
-        font-family: FontAwesome;
-        margin-right: 8px;
-      }
+    .headline {
+      max-width: 390px;
+      overflow: hidden;
     }
   }
 }
