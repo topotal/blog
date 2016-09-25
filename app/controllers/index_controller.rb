@@ -15,7 +15,7 @@ class IndexController < BaseController
     @entry = Entry.find_by_id!(id)
 
     @entry.content = markdown.render(@entry.content) if @entry.content
-    erb :diary
+    erb :entry
   end
 
   get "/edit" do
