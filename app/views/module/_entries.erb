@@ -1,6 +1,6 @@
 <% @entries.each do |entry| %>
   <article class="entriesItem">
-    <h1 class="title"><a href="/diary/<%= entry.id %>">RaspberryPi MinecraftPE サーバ構築</a></h1>
+    <h1 class="title"><a href="/diary/<%= entry.id %>"><%= entry.title %></a></h1>
     <!-- 詳細 -->
     <ul class="detail">
       <li class="item date"><%= entry.created_at %></li>
