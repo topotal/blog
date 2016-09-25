@@ -1,24 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.4)
-      activesupport (= 4.2.4)
-      builder (~> 3.1)
-    activerecord (4.2.4)
-      activemodel (= 4.2.4)
-      activesupport (= 4.2.4)
-      arel (~> 6.0)
-    activesupport (4.2.4)
+    activemodel (5.0.0.1)
+      activesupport (= 5.0.0.1)
+    activerecord (5.0.0.1)
+      activemodel (= 5.0.0.1)
+      activesupport (= 5.0.0.1)
+      arel (~> 7.0)
+    activesupport (5.0.0.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (6.0.3)
+    arel (7.1.2)
     ast (2.3.0)
     backports (3.6.8)
     bcrypt (3.1.11)
-    builder (3.2.2)
+    concurrent-ruby (1.0.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     i18n (0.7.0)
@@ -28,12 +26,12 @@ GEM
       json_schema
       rack
       redcarpet
-    json (1.8.3)
+    json (2.0.2)
     json_schema (0.13.3)
     json_world (0.2.4)
       activesupport
       json
-    minitest (5.8.1)
+    minitest (5.9.0)
     multi_json (1.12.1)
     mysql2 (0.3.20)
     onkcop (0.43.0.1)
