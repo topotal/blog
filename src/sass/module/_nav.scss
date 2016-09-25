@@ -19,37 +19,9 @@ nav {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
 
-    a {
-      float: left;
-      height: 60px;
-      text-decoration: none;
-      margin-right: $MARGIN * 2;
-
-      img {
-        margin: 10px 10px 0 0;
-        height: 40px;
-        display: inline-block;
-        float: left;
-      }
-
-      h1 {
-        color: #FFF;
-        line-height: 60px;
-        margin: 0;
-        float: left;
-      }
-    }
-
-    ul {
-      margin: 0;
-      line-height: 60px;
-      li {
-        display: inline-block;
-        font-size: 1.4em;
-        margin-right: $MARGIN;
-        border-right: 1px solid #F00;
-      }
-    }
+  a {
+    height: 28px;
   }
 }

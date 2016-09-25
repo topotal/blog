@@ -1,112 +1,108 @@
-entry.entriesItem {
-  margin-top: $MARGIN;
-  margin-bottom: $MARGIN * 2;
+.entriesItem {
+  width: 100%;
+  padding-left: 50px;
+  margin-bottom: $MARGIN + 20px;
+  box-sizing: border-box;
 
-  header {
+  &:before {
+    content: "\f097";
+    font-family: FontAwesome;
+    margin: 0 0 0 -50px;
+    padding: 0;
+    position: absolute;
+    display: block;
+    font-size: 2em;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+  }
+
+  .title {
+    line-height: 45px;
+    font-size: 1.7em;
+    font-weight: normal;
+    margin: 0;
+    color: $BLACK;
+
     a {
       color: $BLACK;
       text-decoration: none;
 
-      &:hover{
+      &:hover {
         color: $GRAY;
       }
     }
 
-    h1 {
-      font-size: 2em;
-      font-weight: normal;
-      line-height: 1.1;
-      border-bottom: 5px $BLUE solid;
-      padding-bottom: 5px;
-      margin-top: 0;
+    &:after {
+      content:"";
+      display: block;
+      height: 2px;
+      width: 100%;
+      background:-webkit-gradient(linear, left top, right bottom, from(#f00), to(#00f));
+      background: -webkit-gradient(linear, left top, right bottom, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
+    }
+  }
+
+  .detail {
+    list-style: none;
+    margin: 0 0 0 5px;
+    padding: 0;
+
+    .item {
+      display: inline-block;
+      line-height: 40px;
+      font-size: 0.8em;
+      margin-right: 15px;
+
+      &:before {
+        font-family: FontAwesome;
+        margin: 0 8px 0 0;
+      }
     }
 
-    ul {
+    .date:before {
+      content: "\f073";
+    }
+
+    .author:before {
+      content: "\f007";
+    }
+  }
+
+  .content {
+    display: flex;
+
+    .eyeCatch {
+      min-width: 240px;
+      height: 135px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 1px solid #CCC;
+      padding: 4px;
+      margin-right: 20px;
+
+      .eyeCatchInner {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        img {
+          position: absolute;
+          top: -100%;
+          bottom: -100%;
+          left: -100%;
+          right: -100%;
+          max-width: 400px;
+          max-height: 400px;
+          margin: auto;
+        }
+      }
+    }
+
+    .headline {
+      max-width: 390px;
       overflow: hidden;
-      padding: 0;
-      list-style: none;
-
-      i {
-        margin-right: 5px;
-      }
-
-      li {
-        font-size: 0.8em;
-        margin-right: 20px;
-        float: left;
-      }
-
-      li.hateb, li.facebook {
-        float: right;
-        height: 21px;
-        margin-right: 10px;
-      }
-
-      li.twitter {
-        float: right;
-        height: 21px;
-        margin-right: 0px;
-      }
     }
   }
-
-  .detail_button {
-    display: block;
-    width: 100%;
-    height: 40px;
-    border: $BLUE 2px solid;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
-    color: $BLUE;
-    text-decoration: none;
-
-    &:hover {
-      color: #FFF;
-      background-color: $BLUE;
-    }
-
-  }
-
-  @media only screen and (max-width: $MAX_WIDTH) {
-    header a h1 {
-      font-size: 1.5em;
-    }
-  }
-
 }
-
-
-.pagination {
-  margin: 0 auto $MARGIN;
-  text-align: center;
-
-  em {
-    background-color: $GRAY;
-  }
-
-  a {
-    background-color: $BLUE;
-
-    &:hover {
-      background-color: $GREEN;
-    }
-
-  }
-
-  em, a {
-    color: #FFF;
-    font-style: normal;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    padding: 10px;
-  }
-
-  .disabled {
-    display: none;
-  }
-
-}
-

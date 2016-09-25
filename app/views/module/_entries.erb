@@ -1,22 +1,24 @@
 <% @entries.each do |entry| %>
-  <entry class="entriesItem">
-    <header>
-      <a href="/diary?id=<%= entry.id %>">
-        <h1><%= entry.title %></h1>
-      </a>
-      <ul>
-        <li class="time">
-          <i class="fa fa-calendar"></i>
-          <span><%= entry.created_at.strftime("%Y-%m-%d %a") %></span>
-        </li>
-      </ul>
-    </header>
-    <a class="frame" href="/diary?id=<%= entry.id %>">
-      <img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png">
-    </a>
-    <p><%= entry.content %></p>
-    <a href="/diary/<%= entry.id %>" class="detail_button">続きを見る</a>
-  </entry>
+  <article class="entriesItem">
+    <h1 class="title"><a href="/diary/<%= entry.id %>">RaspberryPi MinecraftPE サーバ構築</a></h1>
+    <!-- 詳細 -->
+    <ul class="detail">
+      <li class="item date"><%= entry.created_at %></li>
+      <li class="item author">sawa-zen</li>
+    </ul>
+    <div class="content">
+      <!-- アイキャッチ -->
+      <div class="eyeCatch">
+        <div class="eyeCatchInner">
+          <img src="https://qiita-image-store.s3.amazonaws.com/0/42248/d56376a7-4949-d9d6-5590-9c4968ee5eba.png" alt="">
+        </div>
+      </div>
+      <!-- ヘッドライン -->
+      <div class="headline">
+        最近 MinecraftPE も アップデートでかなりPC版に近づいてきたので RaspberryPi でサーバを建ててみました。少し躓いたのでまとめておきます。最近 MinecraftPE も アップデートでかなりPC版に近づいてきたので...
+      </div>
+    </div>
+  </article>
 <% end %>
 <%= will_paginate(
   @entries,
