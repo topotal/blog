@@ -18,7 +18,7 @@ class IndexController < BaseController
     erb :diary
   end
 
-  get "/edit/" do
+  get "/edit" do
     @entry = Entry.new
     erb :edit
   end
