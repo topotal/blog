@@ -24,6 +24,15 @@
     margin: 0;
     color: $BLACK;
 
+    a {
+      color: $BLACK;
+      text-decoration: none;
+
+      &:hover {
+        color: $GRAY;
+      }
+    }
+
     &:after {
       content:"";
       display: block;

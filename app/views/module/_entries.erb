@@ -1,9 +1,9 @@
-<% (1..9).each do |entry| %>
+<% @entries.each do |entry| %>
   <article class="entriesItem">
-    <h1 class="title">RaspberryPi MinecraftPE サーバ構築</h1>
+    <h1 class="title"><a href="/diary/<%= entry.id %>">RaspberryPi MinecraftPE サーバ構築</a></h1>
     <!-- 詳細 -->
     <ul class="detail">
-      <li class="item date">2016-09-26</li>
+      <li class="item date"><%= entry.created_at %></li>
       <li class="item author">sawa-zen</li>
     </ul>
     <div class="content">
