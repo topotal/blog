@@ -6,6 +6,7 @@ gem "sinatra-contrib", require: "sinatra/contrib"
 gem "mysql2", "~> 0.3.20"
 gem "will_paginate", "~>3.0.5", require: ["will_paginate", "will_paginate/active_record"]
 gem "activerecord"
+gem "erubis", require: "erubis"
 gem "redcarpet"
 gem "bcrypt"
 gem "sinatra-activerecord", require: "sinatra/activerecord"

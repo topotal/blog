@@ -30,6 +30,20 @@ bundle exec rake schema:dump > docs/schema.json
 bundle exec rake schema:doc > docs/schema.md
 ```
 
+## DB Create/Migration
+
+- DB Create
+
+```
+bundle exec rake db:create
+```
+
+- DB Migration
+
+```
+bundle exec rake db:migrate
+```
+
 ## Run server
 
 ```

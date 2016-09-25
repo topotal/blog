@@ -97,6 +97,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   bcrypt
+  erubis
   jdoc
   json_world
   mysql2 (~> 0.3.20)
