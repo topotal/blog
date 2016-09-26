@@ -86,10 +86,101 @@
         "access_secret_key"
       ],
       "title": "User object"
+    },
+    "entries": {
+      "description": "A entry object of topotal blog",
+      "links": [
+        {
+          "description": "List exisiting entries",
+          "href": "/api/v1/entries/",
+          "method": "GET",
+          "rel": "instances",
+          "title": "entries"
+        },
+        {
+          "description": "Information an exisiting entry find by id",
+          "href": "/api/v1/entries/:id",
+          "method": "GET",
+          "rel": "self",
+          "title": "entries"
+        },
+        {
+          "description": "Create a new entry",
+          "href": "/api/v1/entries/",
+          "method": "POST",
+          "rel": "create",
+          "title": "entries"
+        },
+        {
+          "description": "Update an exisiting entry",
+          "href": "/api/v1/entries/:id",
+          "method": "POST",
+          "rel": "create",
+          "title": "entries"
+        },
+        {
+          "description": "Delete an exisiting entry",
+          "href": "/api/v1/entries/:id",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "entries"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "Entry id",
+          "example": 1,
+          "type": "integer"
+        },
+        "title": {
+          "description": "Entry title",
+          "example": "Blog title",
+          "type": "string"
+        },
+        "content": {
+          "description": "Entry content",
+          "example": "Awesome blog content written in markdown",
+          "type": "string"
+        },
+        "eye_catching": {
+          "description": "Entry eye catching",
+          "example": "Awesome blog entry eye catching",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "Entry created at",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "updated_at": {
+          "description": "Entry updated at",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "publish_date": {
+          "description": "Entry publish time",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "eye_catching",
+        "created_at",
+        "updated_at",
+        "publish_date"
+      ],
+      "title": "Entry object"
     }
   },
   "required": [
-    "users"
+    "users",
+    "entries"
   ],
   "title": "Topotal blog API v1"
 }
