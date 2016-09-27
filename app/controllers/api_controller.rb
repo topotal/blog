@@ -4,37 +4,29 @@ class ApiController < BaseController
   end
 
   get "/v1/entries" do
-    return {
-      status: 200,
-      total: Entry.count,
-      entries: Entry.order("id DESC").paginate(per_page: 20, page: params[:page]),
-    }.to_json
-  end
-
-  get "/v1/entry" do
-    Entry.find_by_id(params[:id]).to_json
-  end
-
-  post "/v1/entry" do
-    if params[:id].blank?
-      target = Entry.create(
-        title: params[:title].to_s,
-        content: params[:content].to_s,
-        eye_catching: params[:eye_catching]
-      )
-    else
-      target = Entry.find_by_id(params[:id])
-      target.update(
-        title: params[:title].to_s,
-        content: params[:content].to_s,
-        eye_catching: params[:eye_catching].to_s
-      )
+    json Entry.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |record|
+      ::Api::Resources::EntryResource.new(record)
     end
+  end
 
-    return {
-      status: 200,
-      entry: target,
-    }.to_json
+  get "/v1/entries/:id" do |id|
+    json ::Api::Resources::EntryResource.new(Entry.find_by_id(id))
+  end
+
+  post "/v1/entries" do
+    json Entry.create(
+      title: params[:title].to_s,
+      content: params[:content].to_s,
+      eye_catching: params[:eye_catching]
+    )
+  end
+
+  post "/v1/entries/:id" do |id|
+    json Entry.find_by_id(id).update(
+      title: params[:title].to_s,
+      content: params[:content].to_s,
+      eye_catching: params[:eye_catching].to_s
+    )
   end
 
   post "/v1/image" do

@@ -60,6 +60,9 @@ module Api
         method: "GET",
         description: "List exisiting entries",
         path: "/api/v1/entries/",
+        parameters: {
+          page: { example: 1, type: Integer },
+        },
         rel: "instances"
       )
 
@@ -76,6 +79,11 @@ module Api
         method: "POST",
         description: "Create a new entry",
         path: "/api/v1/entries/",
+        parameters: {
+          title: { example: "Awesome blog title", type: String },
+          eye_catching: { example: "Awesome blog eye catching", type: String },
+          content: { example: "Awesome blog content written in markdown", type: String },
+        },
         rel: "create"
       )
 
@@ -84,6 +92,11 @@ module Api
         method: "POST",
         description: "Update an exisiting entry",
         path: "/api/v1/entries/:id",
+        parameters: {
+          title: { example: "Awesome blog title", type: String },
+          eye_catching: { example: "Awesome blog eye catching", type: String },
+          content: { example: "Awesome blog content written in markdown", type: String },
+        },
         rel: "create"
       )
 
