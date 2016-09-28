@@ -50,8 +50,12 @@ A entry object of topotal blog
 ### GET /api/v1/entries/
 List exisiting entries
 
+* page
+  * Example: `1`
+  * Type: integer
+
 ```
-GET /api/v1/entries/ HTTP/1.1
+GET /api/v1/entries/?page=1 HTTP/1.1
 Host: api.example.com
 ```
 
@@ -98,9 +102,26 @@ Content-Type: application/json
 ### POST /api/v1/entries/
 Create a new entry
 
+* title
+  * Example: `"Awesome blog title"`
+  * Type: string
+* eye_catching
+  * Example: `"Awesome blog eye catching"`
+  * Type: string
+* content
+  * Example: `"Awesome blog content written in markdown"`
+  * Type: string
+
 ```
 POST /api/v1/entries/ HTTP/1.1
+Content-Type: application/json
 Host: api.example.com
+
+{
+  "title": "Awesome blog title",
+  "eye_catching": "Awesome blog eye catching",
+  "content": "Awesome blog content written in markdown"
+}
 ```
 
 ```
@@ -121,9 +142,26 @@ Content-Type: application/json
 ### POST /api/v1/entries/:id
 Update an exisiting entry
 
+* title
+  * Example: `"Awesome blog title"`
+  * Type: string
+* eye_catching
+  * Example: `"Awesome blog eye catching"`
+  * Type: string
+* content
+  * Example: `"Awesome blog content written in markdown"`
+  * Type: string
+
 ```
 POST /api/v1/entries/:id HTTP/1.1
+Content-Type: application/json
 Host: api.example.com
+
+{
+  "title": "Awesome blog title",
+  "eye_catching": "Awesome blog eye catching",
+  "content": "Awesome blog content written in markdown"
+}
 ```
 
 ```
@@ -176,14 +214,6 @@ A user object for topotal blog
   * User name
   * Example: `"topotan"`
   * Type: string
-* access_key
-  * Example: `"5bf74f334a53a6636229"`
-  * Type: string
-  * Pattern: `/[a-z0-9]{10}/`
-* access_secret_key
-  * Example: `"9bf31d7c631aabf3ed72"`
-  * Type: string
-  * Pattern: `/[a-z0-9]{10}/`
 
 ### POST /api/v1/users/register
 User registration
@@ -212,9 +242,7 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "name": "topotan",
-  "access_key": "5bf74f334a53a6636229",
-  "access_secret_key": "9bf31d7c631aabf3ed72"
+  "name": "topotan"
 }
 ```
 
@@ -244,10 +272,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "topotan",
-  "access_key": "5bf74f334a53a6636229",
-  "access_secret_key": "9bf31d7c631aabf3ed72"
+  "token": "secret.token.issued-by-topotal"
 }
 ```
 

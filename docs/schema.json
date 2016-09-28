@@ -54,6 +54,18 @@
               "password"
             ]
           },
+          "targetSchema": {
+            "properties": {
+              "token": {
+                "description": "JWT Token issued by blog.topotal.com",
+                "example": "secret.token.issued-by-topotal",
+                "type": "string"
+              }
+            },
+            "required": [
+              "token"
+            ]
+          },
           "title": "login"
         }
       ],
@@ -67,23 +79,11 @@
           "description": "User name",
           "example": "topotan",
           "type": "string"
-        },
-        "access_key": {
-          "example": "5bf74f334a53a6636229",
-          "pattern": "[a-z0-9]{10}",
-          "type": "string"
-        },
-        "access_secret_key": {
-          "example": "9bf31d7c631aabf3ed72",
-          "pattern": "[a-z0-9]{10}",
-          "type": "string"
         }
       },
       "required": [
         "id",
-        "name",
-        "access_key",
-        "access_secret_key"
+        "name"
       ],
       "title": "User object"
     },
@@ -95,6 +95,17 @@
           "href": "/api/v1/entries/",
           "method": "GET",
           "rel": "instances",
+          "schema": {
+            "properties": {
+              "page": {
+                "example": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "page"
+            ]
+          },
           "title": "entries"
         },
         {
@@ -109,6 +120,27 @@
           "href": "/api/v1/entries/",
           "method": "POST",
           "rel": "create",
+          "schema": {
+            "properties": {
+              "title": {
+                "example": "Awesome blog title",
+                "type": "string"
+              },
+              "eye_catching": {
+                "example": "Awesome blog eye catching",
+                "type": "string"
+              },
+              "content": {
+                "example": "Awesome blog content written in markdown",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "eye_catching",
+              "content"
+            ]
+          },
           "title": "entries"
         },
         {
@@ -116,6 +148,27 @@
           "href": "/api/v1/entries/:id",
           "method": "POST",
           "rel": "create",
+          "schema": {
+            "properties": {
+              "title": {
+                "example": "Awesome blog title",
+                "type": "string"
+              },
+              "eye_catching": {
+                "example": "Awesome blog eye catching",
+                "type": "string"
+              },
+              "content": {
+                "example": "Awesome blog content written in markdown",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "eye_catching",
+              "content"
+            ]
+          },
           "title": "entries"
         },
         {

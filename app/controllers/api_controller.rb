@@ -1,6 +1,34 @@
 class ApiController < BaseController
+  helpers do
+    def tokenize(name, expire = 3600)
+      header = { iat: Time.now.to_i, exp: Time.now.to_i + expire, iss: ENV["JWT_ISSUER"] }
+      content = { scopes: ["*"], name: name }
+      JWT.encode(header.merge(content), ENV["JWT_SECRET"], "HS256")
+    end
+
+    def authorization!
+      options = { algorithm: "HS256", iss: ENV["JWT_ISSUER"] }
+      bearer = request.env.fetch("HTTP_AUTHORIZATION", "").slice(7..-1)
+      begin
+        @payload, @header = JWT.decode(bearer, ENV["JWT_SECRET"], true, options)
+      rescue JWT::DecodeError
+        halt([401, { "Content-Type" => "text/plain" }, ["A token must be passed."]])
+      rescue JWT::ExpiredSignature
+        halt([403, { "Content-Type" => "text/plain" }, ["The token has expired."]])
+      rescue JWT::InvalidIssuerError
+        halt([403, { "Content-Type" => "text/plain" }, ["The token does not have a valid issuer."]])
+      rescue JWT::InvalidIatError
+        halt([403, { "Content-Type" => "text/plain" }, ["The token does not have a valid 'issued at' time."]])
+      end
+    end
+  end
+
   before do
     content_type :json, charset: "utf-8"
+  end
+
+  before "/v1/entries*" do
+    authorization!
   end
 
   get "/v1/entries" do
@@ -14,19 +42,29 @@ class ApiController < BaseController
   end
 
   post "/v1/entries" do
-    json Entry.create(
-      title: params[:title].to_s,
-      content: params[:content].to_s,
-      eye_catching: params[:eye_catching]
-    )
+    params = JSON.parse(request.body.read, symbolize_names: true)
+    title, content, eye_catching = params.values_at(:title, :content, :eye_catching)
+    json Entry.create(title: title, content: content, eye_catching: eye_catching)
   end
 
   post "/v1/entries/:id" do |id|
-    json Entry.find_by_id(id).update(
-      title: params[:title].to_s,
-      content: params[:content].to_s,
-      eye_catching: params[:eye_catching].to_s
-    )
+    params = JSON.parse(request.body.read, symbolize_names: true)
+    title, content, eye_catching = params.values_at(:title, :content, :eye_catching)
+    json Entry.find_by_id(id).update(title: title, content: content, eye_catching: eye_catching)
+  end
+
+  post "/v1/users/register" do
+    params = JSON.parse(request.body.read, symbolize_names: true)
+    name, password = params.values_at(:name, :password)
+    User.create!(name: name, password: password, password_confirmation: password)
+  end
+
+  post "/v1/users/login" do
+    params = JSON.parse(request.body.read, symbolize_names: true)
+    name, password = params.values_at(:name, :password)
+
+    halt(401) unless User.find_by!(name: name).authenticate(password)
+    json({ token: tokenize(name) })
   end
 
   post "/v1/image" do
@@ -40,30 +78,5 @@ class ApiController < BaseController
         url: access_path
       )
     end
-  end
-
-  post "/v1/register" do
-    name = params[:name]
-    password = params[:password]
-    user = User.new(name: name, password: password, password_confirmation: password, access_key: SecureRandom.hex(10), access_secret_key: SecureRandom.hex(10))
-    user.save
-    return {
-      access_key: user.access_key,
-      access_secret_key: user.access_secret_key,
-    }.to_json
-  end
-
-  post "/v1/login" do
-    name = params[:name]
-    password = params[:password]
-    return 401 unless name && password
-
-    user = User.find_by(name: name)
-    return 401 unless user.authenticate(password)
-
-    return {
-      access_key: user.access_key,
-      access_secret_key: user.access_secret_key,
-    }.to_json
   end
 end
