@@ -1,4 +1,18 @@
 .entry {
+  padding-left: 50px;
+
+  &:before {
+    content: "\f097";
+    font-family: FontAwesome;
+    margin: 0 0 0 -50px;
+    padding: 0;
+    position: absolute;
+    display: block;
+    font-size: 2em;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+  }
 
   header {
     margin-bottom: $MARGIN;
