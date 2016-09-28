@@ -21,4 +21,14 @@ namespace :schema do
     require_relative "./app/resources/schema.rb"
     puts Jdoc::Generator.call(JSON.parse(Api::Schema.to_json_schema)).gsub(/^ \*/, "  *")
   end
+
+  desc "Update API documentation and json schema"
+  task :update do
+    require "jdoc"
+    require_relative "./app/resources/schema.rb"
+    schema_path = "./docs/schema.json"
+    document_path = "./docs/schema.md"
+    File.write(schema_path, Api::Schema.to_json_schema)
+    File.write(document_path, Jdoc::Generator.call(JSON.parse(Api::Schema.to_json_schema)).gsub(/^ \*/, "  *"))
+  end
 end

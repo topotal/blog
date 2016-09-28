@@ -20,20 +20,6 @@ module Api
         example: "topotan"
       )
 
-      property(
-        :access_key,
-        type: String,
-        pattern: "[a-z0-9]{10}",
-        example: "5bf74f334a53a6636229"
-      )
-
-      property(
-        :access_secret_key,
-        type: String,
-        pattern: "[a-z0-9]{10}",
-        example: "9bf31d7c631aabf3ed72"
-      )
-
       link(
         :register,
         method: "POST",
@@ -55,15 +41,20 @@ module Api
           username: { example: "topotan", type: String },
           password: { example: "p@ssw0rd", type: String },
         },
+        target_schema: {
+          token: {
+            description: "JWT Token issued by blog.topotal.com",
+            example: "secret.token.issued-by-topotal",
+            type: String,
+          },
+        },
         rel: "self"
       )
 
-      attr_reader :id, :name, :access_key, :access_secret_key
+      attr_reader :id, :name
       def initialize(user)
         @id = user.id
         @name = user.name
-        @access_key = user.access_key
-        @access_secret_key = user.access_secret_key
       end
     end
   end

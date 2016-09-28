@@ -47,5 +47,5 @@ bundle exec rake db:migrate
 ## Run server
 
 ```
-bundle exec rackup
+JWT_SECRET="yoursecret" JWT_ISSUER="blog.topotal.com"  bundle exec rackup
 ```

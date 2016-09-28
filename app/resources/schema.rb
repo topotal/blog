@@ -1,6 +1,7 @@
 require "json_world"
 
 require_relative "./user_resource.rb"
+require_relative "./entry_resource.rb"
 
 module Api
   class Schema
@@ -10,6 +11,7 @@ module Api
     description "Topotal API v1 interface document written in JSON Hyper Schema draft v4"
 
     property :users, links: true, type: Api::Resources::UserResource
+    property :entries, links: true, type: Api::Resources::EntryResource
     link href: "https://blog.topotal.com", rel: "self"
   end
 end

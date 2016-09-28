@@ -54,6 +54,18 @@
               "password"
             ]
           },
+          "targetSchema": {
+            "properties": {
+              "token": {
+                "description": "JWT Token issued by blog.topotal.com",
+                "example": "secret.token.issued-by-topotal",
+                "type": "string"
+              }
+            },
+            "required": [
+              "token"
+            ]
+          },
           "title": "login"
         }
       ],
@@ -67,29 +79,161 @@
           "description": "User name",
           "example": "topotan",
           "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "User object"
+    },
+    "entries": {
+      "description": "A entry object of topotal blog",
+      "links": [
+        {
+          "description": "List exisiting entries",
+          "href": "/api/v1/entries/",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "properties": {
+              "page": {
+                "example": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "page"
+            ]
+          },
+          "title": "entries"
         },
-        "access_key": {
-          "example": "5bf74f334a53a6636229",
-          "pattern": "[a-z0-9]{10}",
+        {
+          "description": "Information an exisiting entry find by id",
+          "href": "/api/v1/entries/:id",
+          "method": "GET",
+          "rel": "self",
+          "title": "entries"
+        },
+        {
+          "description": "Create a new entry",
+          "href": "/api/v1/entries/",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "title": {
+                "example": "Awesome blog title",
+                "type": "string"
+              },
+              "eye_catching": {
+                "example": "Awesome blog eye catching",
+                "type": "string"
+              },
+              "content": {
+                "example": "Awesome blog content written in markdown",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "eye_catching",
+              "content"
+            ]
+          },
+          "title": "entries"
+        },
+        {
+          "description": "Update an exisiting entry",
+          "href": "/api/v1/entries/:id",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "title": {
+                "example": "Awesome blog title",
+                "type": "string"
+              },
+              "eye_catching": {
+                "example": "Awesome blog eye catching",
+                "type": "string"
+              },
+              "content": {
+                "example": "Awesome blog content written in markdown",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "eye_catching",
+              "content"
+            ]
+          },
+          "title": "entries"
+        },
+        {
+          "description": "Delete an exisiting entry",
+          "href": "/api/v1/entries/:id",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "entries"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "Entry id",
+          "example": 1,
+          "type": "integer"
+        },
+        "title": {
+          "description": "Entry title",
+          "example": "Blog title",
           "type": "string"
         },
-        "access_secret_key": {
-          "example": "9bf31d7c631aabf3ed72",
-          "pattern": "[a-z0-9]{10}",
+        "content": {
+          "description": "Entry content",
+          "example": "Awesome blog content written in markdown",
+          "type": "string"
+        },
+        "eye_catching": {
+          "description": "Entry eye catching",
+          "example": "Awesome blog entry eye catching",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "Entry created at",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "updated_at": {
+          "description": "Entry updated at",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "publish_date": {
+          "description": "Entry publish time",
+          "example": "2012-07-26 01:00:00.000+09:00",
+          "format": "date-time",
           "type": "string"
         }
       },
       "required": [
         "id",
-        "name",
-        "access_key",
-        "access_secret_key"
+        "title",
+        "content",
+        "eye_catching",
+        "created_at",
+        "updated_at",
+        "publish_date"
       ],
-      "title": "User object"
+      "title": "Entry object"
     }
   },
   "required": [
-    "users"
+    "users",
+    "entries"
   ],
   "title": "Topotal blog API v1"
 }
