@@ -1,0 +1,51 @@
+.entry {
+
+  header {
+    margin-bottom: $MARGIN;
+
+    .title {
+      line-height: 45px;
+      font-size: 1.7em;
+      font-weight: normal;
+      margin: 0 0 ($MARGIN / 2) 0;
+      color: $BLACK;
+
+      a {
+        color: $BLACK;
+        text-decoration: none;
+
+        &:hover {
+          color: $GRAY;
+        }
+      }
+
+      &:after {
+        content:"";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background:-webkit-gradient(linear, left top, right bottom, from(#f00), to(#00f));
+        background: -webkit-gradient(linear, left top, right bottom, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
+      }
+    }
+
+    .items {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      line-height: normal;
+      justify-content: flex-start;
+      font-size: 0.8em;
+
+      .item {
+        display: block;
+        margin-right: 10px;
+
+        &.time {
+          line-height: 21px;
+        }
+      }
+    }
+  }
+}
