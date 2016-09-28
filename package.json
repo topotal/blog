@@ -4,7 +4,8 @@
   "description": "sawa-zen.com ====",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build & npm run watch & bundle exec rackup",
+    "start": "npm run build & npm run watch & npm run rackup",
+    "rackup": "JWT_SECRET='yoursecret' JWT_ISSUER='blog.topotal.com' bundle exec rackup",
     "build": "npm run build:sass & npm run build:js",
     "build:js": "browserify src/js/app.js -t babelify --outfile public/bundle.js",
     "build:sass": "node-sass src/sass --output public/css",
