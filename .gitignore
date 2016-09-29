@@ -1,7 +1,7 @@
 node_modules/
-public/bundle.js
-public/css/*
-public/img/upload/*
+public/assets/js/*
+public/assets/css/*
+public/assets/img/upload/*
 config/database.yml
 npm-debug.log
 vendor
