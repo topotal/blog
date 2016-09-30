@@ -33,6 +33,15 @@
   }
 }
 
-.twitter-timeline {
-  border: 1px solid $GRAY;
+.sns {
+  margin: 0 0 $MARGIN 0;
+  padding: 0;
+  list-style: none;
+  line-height: normal;
+  display: flex;
+
+  li {
+    display: block;
+    margin-right: 5px;
+  }
 }
