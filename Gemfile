@@ -6,8 +6,8 @@ gem "sinatra-contrib", require: "sinatra/contrib"
 gem "will_paginate", "~>3.0.5", require: ["will_paginate", "will_paginate/active_record"]
 gem "erubis", require: "erubis"
 gem "sinatra-activerecord", require: "sinatra/activerecord"
-gem "json_world", require: "json_world"
-gem "jwt", require: "jwt"
+gem "json_world"
+gem "jwt"
 gem "mysql2", "~> 0.3.20"
 gem "activerecord"
 gem "redcarpet"
@@ -16,8 +16,14 @@ gem "bcrypt"
 group :development do
   gem "rake"
   gem "sqlite3"
-  gem "rspec"
   gem "rubocop"
   gem "onkcop"
   gem "jdoc"
+end
+
+group :test do
+  gem "factory_girl"
+  gem "faker"
+  gem "rspec", require: "rspec/core/rake_task"
+  gem "database_cleaner"
 end

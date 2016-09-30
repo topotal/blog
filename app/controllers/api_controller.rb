@@ -1,24 +1,24 @@
 class ApiController < BaseController
   helpers do
-    def tokenize(name, expire = 3600)
+    def tokenize(name, issuer: ENV["JWT_ISSUER"], expire: 3600)
       header = { iat: Time.now.to_i, exp: Time.now.to_i + expire, iss: ENV["JWT_ISSUER"] }
       content = { scopes: ["*"], name: name }
       JWT.encode(header.merge(content), ENV["JWT_SECRET"], "HS256")
     end
 
     def authorization!
-      options = { algorithm: "HS256", iss: ENV["JWT_ISSUER"] }
+      options = { algorithm: "HS256", iss: ENV["JWT_ISSUER"], verify_iss: true, verify_iat: true }
       bearer = request.env.fetch("HTTP_AUTHORIZATION", "").slice(7..-1)
       begin
         @payload, @header = JWT.decode(bearer, ENV["JWT_SECRET"], true, options)
-      rescue JWT::DecodeError
-        halt([401, { "Content-Type" => "text/plain" }, ["A token must be passed."]])
-      rescue JWT::ExpiredSignature
-        halt([403, { "Content-Type" => "text/plain" }, ["The token has expired."]])
-      rescue JWT::InvalidIssuerError
-        halt([403, { "Content-Type" => "text/plain" }, ["The token does not have a valid issuer."]])
-      rescue JWT::InvalidIatError
-        halt([403, { "Content-Type" => "text/plain" }, ["The token does not have a valid 'issued at' time."]])
+      rescue JWT::ExpiredSignature => e
+        halt([403, { "Content-Type" => "text/plain" }, e.to_s])
+      rescue JWT::InvalidIssuerError => e
+        halt([403, { "Content-Type" => "text/plain" }, e.to_s])
+      rescue JWT::InvalidIatError => e
+        halt([403, { "Content-Type" => "text/plain" }, e.to_s])
+      rescue JWT::DecodeError => e
+        halt([401, { "Content-Type" => "text/plain" }, e.to_s])
       end
     end
   end
