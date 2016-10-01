@@ -38,3 +38,20 @@ body {
     width: 300px;
   }
 }
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  #content {
+    display: block;
+    padding: 10px;
+
+    #main {
+      width: 100%;
+      margin-right: auto;
+      margin-bottom: $MARGIN;
+    }
+
+    #aside {
+      width: 100%;
+    }
+  }
+}
