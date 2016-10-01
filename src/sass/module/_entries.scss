@@ -138,3 +138,70 @@
   }
 
 }
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  .entriesItem {
+    padding-left: 20px;
+    &:before {
+      width: 20px;
+      height: 20px;
+      font-size: 1em;
+      margin: 6px 0 0 -24px;
+    }
+    .title {
+      font-size: 1.2em;
+      line-height: 35px;
+
+      a {
+        &:hover {
+        }
+      }
+      &:after {
+      }
+    }
+
+    .detail {
+      .item {
+        line-height: 35px;
+        &:before {
+        }
+      }
+      .date:before {
+      }
+      .author:before {
+      }
+    }
+
+    .content {
+      display: block;
+      font-size: 0.8em;
+      .eyeCatch {
+        margin-right: auto;
+        margin-bottom: 10px;
+        .eyeCatchInner {
+          img {
+          }
+        }
+      }
+
+      .headline {
+      }
+    }
+  }
+
+  .pagination {
+    em {
+    }
+
+    a {
+      &:hover {
+      }
+    }
+
+    em, a {
+    }
+
+    .disabled {
+    }
+  }
+}

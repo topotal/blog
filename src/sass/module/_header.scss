@@ -14,8 +14,6 @@
     left: 0;
     right: 0;
     display: block;
-    width: 551px;
-    height: 160px;
   }
 }
 
@@ -23,6 +21,11 @@
   #header {
     height: 130px;
     h1 {
+      top: 0;
+      img {
+        width: 300px;
+        height: auto;
+      }
     }
   }
 }
