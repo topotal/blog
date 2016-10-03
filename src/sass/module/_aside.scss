@@ -1,38 +1,49 @@
-#profile {
-  text-align: center;
-  margin-bottom: $MARGIN;
-  padding: 20px;
-  background-color: #EEE;
+aside {
+  #profile {
+    text-align: center;
+    margin-bottom: $MARGIN;
+    padding: 20px;
+    background-color: #EEE;
 
-  h3 {
-    margin: 0 0 15px;
-    color: #888;
-    font-size: 0.9em;
+    h3 {
+      margin: 0 0 15px;
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    p {
+      margin: 0;
+
+      img {
+        margin: 0 auto 10px;
+        display: block;
+        border-radius: 40px;
+      }
+
+      span, strong {
+        display: block;
+      }
+
+      .name {
+        margin: 0 0 10px;
+      }
+
+      .detail {
+        font-size: 0.7em;
+      }
+    }
   }
 
-  p {
-    margin: 0;
+  .sns {
+    margin: 0 0 $MARGIN 0;
+    padding: 0;
+    list-style: none;
+    line-height: normal;
+    display: flex;
 
-    img {
-      margin: 0 auto 10px;
+    li {
       display: block;
-      border-radius: 40px;
-    }
-
-    span, strong {
-      display: block;
-    }
-
-    .name {
-      margin: 0 0 10px;
-    }
-
-    .detail {
-      font-size: 0.7em;
+      margin-right: 5px;
     }
   }
-}
-
-.twitter-timeline {
-  border: 1px solid $GRAY;
 }

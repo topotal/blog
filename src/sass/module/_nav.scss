@@ -24,3 +24,14 @@ nav {
     height: 28px;
   }
 }
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  nav {
+    .inner {
+      padding: 0 10px;
+    }
+
+    a {
+    }
+  }
+}

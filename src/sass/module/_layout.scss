@@ -6,12 +6,14 @@ body {
   min-width: 320px;
   line-height: 1.5;
   color: $BLACK;
+  background-color: $BLACK;
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 
 #wrapper {
   margin-top: 45px;
   min-height: 100%;
+  background-color: #FFF;
 }
 
 #content {
@@ -34,5 +36,22 @@ body {
   #aside {
     min-width: 300px;
     width: 300px;
+  }
+}
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  #content {
+    display: block;
+    padding: 10px;
+
+    #main {
+      width: 100%;
+      margin-right: auto;
+      margin-bottom: $MARGIN;
+    }
+
+    #aside {
+      width: 100%;
+    }
   }
 }

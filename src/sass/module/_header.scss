@@ -4,6 +4,7 @@
   color: #FFF;
   text-align: center;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(76, 192, 239)), to(rgb(0, 139, 209)));
+  overflow: hidden;
 
   h1 {
     position: absolute;
@@ -13,7 +14,18 @@
     left: 0;
     right: 0;
     display: block;
-    width: 551px;
-    height: 160px;
+  }
+}
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  #header {
+    height: 130px;
+    h1 {
+      top: 30px;
+      img {
+        width: 189px;
+        height: auto;
+      }
+    }
   }
 }
