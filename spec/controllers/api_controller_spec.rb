@@ -53,7 +53,7 @@ describe ApiController do
       get "/v1/entries/#{entry.id}", nil, valid_header
 
       expect(last_response.status).to eq 200
-      expect(JSON.parse(last_response.body)).to eq entry.as_json
+      expect(JSON.parse(last_response.body)).to eq JSON.parse(::Api::Resources::EntryResource.new(entry).to_json)
     end
   end
 end
