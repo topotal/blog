@@ -5,6 +5,13 @@ describe ApiController do
   let(:valid_token) { JWT.encode({ iat: Time.now.to_i, exp: Time.now.to_i + 36000, iss: ENV["JWT_ISSUER"] }, ENV["JWT_SECRET"], "HS256") }
   let(:valid_header) { { "HTTP_AUTHORIZATION" => "Bearer #{valid_token}", "JWT_SECRET" => ENV["JWT_SECRET"] } }
 
+  shared_examples_for "invalid_body!" do |path|
+    it "400 when body is invalid" do
+      post path, nil, valid_header
+      expect(last_response.status).to eq 400
+    end
+  end
+
   shared_examples_for "authorization!" do |path|
     it "403 when token has expired" do
       token = JWT.encode({ iat: Time.now.to_i, exp: Time.now.to_i, iss: ENV["JWT_ISSUER"] }, ENV["JWT_SECRET"], "HS256")
@@ -60,6 +67,7 @@ describe ApiController do
   describe "POST /v1/entries" do
     let(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
     it_should_behave_like "authorization!", "/v1/entries"
+    it_should_behave_like "invalid_body!", "/v1/entries/1"
 
     it "can create new entry" do
       expect { post "/v1/entries", params.to_json, valid_header }.to change(Entry, :count).by(1)
@@ -69,12 +77,18 @@ describe ApiController do
       post "/v1/entries", params.to_json, valid_header
       expect(last_response.status).to eq 201
     end
+
+    it "error messages if invalid parameters" do
+      post "/v1/entries", {}.to_json, valid_header
+      expect(last_response.status).to eq 400
+    end
   end
 
   describe "POST /v1/entries/:id" do
     let!(:entry) { FactoryGirl.create(:entry) }
     let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
     it_should_behave_like "authorization!", "/v1/entries/1"
+    it_should_behave_like "invalid_body!", "/v1/entries/1"
 
     it "not increase entry counts" do
       expect { post "/v1/entries/#{entry.id}", params.to_json, valid_header }.not_to change(Entry, :count)
@@ -85,9 +99,15 @@ describe ApiController do
       expect(last_response.status).to eq 201
     end
 
-    it "entry update according to params" do
+    it "entry update according to parameters" do
       post "/v1/entries/#{entry.id}", params.to_json, valid_header
       expect(entry.reload.attributes).to include params
+    end
+
+    it "return error messages and not updated if invalid parameters" do
+      post "/v1/entries/#{entry.id}", { title: nil }.to_json, valid_header
+      expect(entry.reload).to eq entry
+      expect(last_response.status).to eq 400
     end
   end
 end

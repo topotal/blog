@@ -6,6 +6,12 @@ class ApiController < BaseController
       JWT.encode(header.merge(content), ENV["JWT_SECRET"], "HS256")
     end
 
+    def parse_json_or_halt(body)
+      JSON.parse(body, symbolize_names: true)
+    rescue StandardError => e
+      halt([400, { "Content-Type" => "text/plain" }, e.to_s])
+    end
+
     def authorization!
       options = { algorithm: "HS256", iss: ENV["JWT_ISSUER"], verify_iss: true, verify_iat: true }
       bearer = request.env.fetch("HTTP_AUTHORIZATION", "").slice(7..-1)
@@ -42,25 +48,22 @@ class ApiController < BaseController
   end
 
   post "/v1/entries" do
-    params = JSON.parse(request.body.read, symbolize_names: true)
-    Entry.create(params).valid? ? 201 : json(errors.messages)
+    entry = Entry.create(parse_json_or_halt(request.body.read))
+    entry.valid? ? 201 : [400, entry.errors.messages.to_json]
   end
 
   post "/v1/entries/:id" do |id|
-    params = JSON.parse(request.body.read, symbolize_names: true)
-    Entry.find_by_id(id).update(params) ? 201 : json(errors.messages)
+    entry = Entry.find_by_id(id)
+    entry.update_attributes(parse_json_or_halt(request.body.read)) ? 201 : [400, entry.errors.messages.to_json]
   end
 
   post "/v1/users/register" do
-    params = JSON.parse(request.body.read, symbolize_names: true)
-    name, password = params.values_at(:name, :password)
+    name, password = parse_json_or_halt(request.body.read).values_at(:name, :password)
     User.create!(name: name, password: password, password_confirmation: password)
   end
 
   post "/v1/users/login" do
-    params = JSON.parse(request.body.read, symbolize_names: true)
-    name, password = params.values_at(:name, :password)
-
+    name, password = parse_json_or_halt(request.body.read).values_at(:name, :password)
     halt(401) unless User.find_by!(name: name).authenticate(password)
     json({ token: tokenize(name) })
   end
