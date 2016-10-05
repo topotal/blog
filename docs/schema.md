@@ -2,9 +2,9 @@
 Topotal API v1 interface document written in JSON Hyper Schema draft v4
 
 * [Entry object](#entry-object)
-  * [GET /api/v1/entries/](#get-apiv1entries)
+  * [GET /api/v1/entries](#get-apiv1entries)
   * [GET /api/v1/entries/:id](#get-apiv1entriesid)
-  * [POST /api/v1/entries/](#post-apiv1entries)
+  * [POST /api/v1/entries](#post-apiv1entries)
   * [POST /api/v1/entries/:id](#post-apiv1entriesid)
   * [DELETE /api/v1/entries/:id](#delete-apiv1entriesid)
 * [User object](#user-object)
@@ -12,7 +12,7 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
   * [POST /api/v1/users/login](#post-apiv1userslogin)
 
 ## Entry object
-A entry object of topotal blog
+A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.
 
 ### Properties
 * id
@@ -33,21 +33,25 @@ A entry object of topotal blog
   * Type: string
 * created_at
   * Entry created at
-  * Example: `"2012-07-26 01:00:00.000+09:00"`
+  * Example: `"2012-07-26T01:00:00+09:00"`
   * Type: string
   * Format: date-time
 * updated_at
   * Entry updated at
-  * Example: `"2012-07-26 01:00:00.000+09:00"`
+  * Example: `"2012-07-26T01:00:00+09:00"`
   * Type: string
   * Format: date-time
 * publish_date
   * Entry publish time
-  * Example: `"2012-07-26 01:00:00.000+09:00"`
+  * Example: `"2012-07-26T01:00:00+09:00"`
   * Type: string
   * Format: date-time
+* author
+  * Entry author name
+  * Example: `"topotan"`
+  * Type: string
 
-### GET /api/v1/entries/
+### GET /api/v1/entries
 List exisiting entries
 
 * page
@@ -55,7 +59,7 @@ List exisiting entries
   * Type: integer
 
 ```
-GET /api/v1/entries/?page=1 HTTP/1.1
+GET /api/v1/entries?page=1 HTTP/1.1
 Host: api.example.com
 ```
 
@@ -69,9 +73,10 @@ Content-Type: application/json
     "title": "Blog title",
     "content": "Awesome blog content written in markdown",
     "eye_catching": "Awesome blog entry eye catching",
-    "created_at": "2012-07-26 01:00:00.000+09:00",
-    "updated_at": "2012-07-26 01:00:00.000+09:00",
-    "publish_date": "2012-07-26 01:00:00.000+09:00"
+    "created_at": "2012-07-26T01:00:00+09:00",
+    "updated_at": "2012-07-26T01:00:00+09:00",
+    "publish_date": "2012-07-26T01:00:00+09:00",
+    "author": "topotan"
   }
 ]
 ```
@@ -93,13 +98,14 @@ Content-Type: application/json
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
   "eye_catching": "Awesome blog entry eye catching",
-  "created_at": "2012-07-26 01:00:00.000+09:00",
-  "updated_at": "2012-07-26 01:00:00.000+09:00",
-  "publish_date": "2012-07-26 01:00:00.000+09:00"
+  "created_at": "2012-07-26T01:00:00+09:00",
+  "updated_at": "2012-07-26T01:00:00+09:00",
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "author": "topotan"
 }
 ```
 
-### POST /api/v1/entries/
+### POST /api/v1/entries
 Create a new entry
 
 * title
@@ -111,16 +117,19 @@ Create a new entry
 * content
   * Example: `"Awesome blog content written in markdown"`
   * Type: string
+* publish_date
+  * Example: `"2012-07-26T01:00:00+09:00"`
 
 ```
-POST /api/v1/entries/ HTTP/1.1
+POST /api/v1/entries HTTP/1.1
 Content-Type: application/json
 Host: api.example.com
 
 {
   "title": "Awesome blog title",
   "eye_catching": "Awesome blog eye catching",
-  "content": "Awesome blog content written in markdown"
+  "content": "Awesome blog content written in markdown",
+  "publish_date": "2012-07-26T01:00:00+09:00"
 }
 ```
 
@@ -133,9 +142,10 @@ Content-Type: application/json
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
   "eye_catching": "Awesome blog entry eye catching",
-  "created_at": "2012-07-26 01:00:00.000+09:00",
-  "updated_at": "2012-07-26 01:00:00.000+09:00",
-  "publish_date": "2012-07-26 01:00:00.000+09:00"
+  "created_at": "2012-07-26T01:00:00+09:00",
+  "updated_at": "2012-07-26T01:00:00+09:00",
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "author": "topotan"
 }
 ```
 
@@ -151,6 +161,8 @@ Update an exisiting entry
 * content
   * Example: `"Awesome blog content written in markdown"`
   * Type: string
+* publish_date
+  * Example: `"2012-07-26T01:00:00+09:00"`
 
 ```
 POST /api/v1/entries/:id HTTP/1.1
@@ -160,7 +172,8 @@ Host: api.example.com
 {
   "title": "Awesome blog title",
   "eye_catching": "Awesome blog eye catching",
-  "content": "Awesome blog content written in markdown"
+  "content": "Awesome blog content written in markdown",
+  "publish_date": "2012-07-26T01:00:00+09:00"
 }
 ```
 
@@ -173,9 +186,10 @@ Content-Type: application/json
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
   "eye_catching": "Awesome blog entry eye catching",
-  "created_at": "2012-07-26 01:00:00.000+09:00",
-  "updated_at": "2012-07-26 01:00:00.000+09:00",
-  "publish_date": "2012-07-26 01:00:00.000+09:00"
+  "created_at": "2012-07-26T01:00:00+09:00",
+  "updated_at": "2012-07-26T01:00:00+09:00",
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "author": "topotan"
 }
 ```
 
@@ -196,9 +210,10 @@ Content-Type: application/json
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
   "eye_catching": "Awesome blog entry eye catching",
-  "created_at": "2012-07-26 01:00:00.000+09:00",
-  "updated_at": "2012-07-26 01:00:00.000+09:00",
-  "publish_date": "2012-07-26 01:00:00.000+09:00"
+  "created_at": "2012-07-26T01:00:00+09:00",
+  "updated_at": "2012-07-26T01:00:00+09:00",
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "author": "topotan"
 }
 ```
 

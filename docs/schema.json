@@ -88,11 +88,11 @@
       "title": "User object"
     },
     "entries": {
-      "description": "A entry object of topotal blog",
+      "description": "A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.",
       "links": [
         {
           "description": "List exisiting entries",
-          "href": "/api/v1/entries/",
+          "href": "/api/v1/entries",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -117,7 +117,7 @@
         },
         {
           "description": "Create a new entry",
-          "href": "/api/v1/entries/",
+          "href": "/api/v1/entries",
           "method": "POST",
           "rel": "create",
           "schema": {
@@ -133,12 +133,16 @@
               "content": {
                 "example": "Awesome blog content written in markdown",
                 "type": "string"
+              },
+              "publish_date": {
+                "example": "2012-07-26T01:00:00+09:00"
               }
             },
             "required": [
               "title",
               "eye_catching",
-              "content"
+              "content",
+              "publish_date"
             ]
           },
           "title": "entries"
@@ -161,12 +165,16 @@
               "content": {
                 "example": "Awesome blog content written in markdown",
                 "type": "string"
+              },
+              "publish_date": {
+                "example": "2012-07-26T01:00:00+09:00"
               }
             },
             "required": [
               "title",
               "eye_catching",
-              "content"
+              "content",
+              "publish_date"
             ]
           },
           "title": "entries"
@@ -202,20 +210,25 @@
         },
         "created_at": {
           "description": "Entry created at",
-          "example": "2012-07-26 01:00:00.000+09:00",
+          "example": "2012-07-26T01:00:00+09:00",
           "format": "date-time",
           "type": "string"
         },
         "updated_at": {
           "description": "Entry updated at",
-          "example": "2012-07-26 01:00:00.000+09:00",
+          "example": "2012-07-26T01:00:00+09:00",
           "format": "date-time",
           "type": "string"
         },
         "publish_date": {
           "description": "Entry publish time",
-          "example": "2012-07-26 01:00:00.000+09:00",
+          "example": "2012-07-26T01:00:00+09:00",
           "format": "date-time",
+          "type": "string"
+        },
+        "author": {
+          "description": "Entry author name",
+          "example": "topotan",
           "type": "string"
         }
       },
@@ -226,7 +239,8 @@
         "eye_catching",
         "created_at",
         "updated_at",
-        "publish_date"
+        "publish_date",
+        "author"
       ],
       "title": "Entry object"
     }
