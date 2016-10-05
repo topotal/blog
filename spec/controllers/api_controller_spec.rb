@@ -4,7 +4,6 @@ describe ApiController do
   let(:app) { ApiController.new }
   let(:valid_token) { JWT.encode({ iat: Time.now.to_i, exp: Time.now.to_i + 36000, iss: ENV["JWT_ISSUER"] }, ENV["JWT_SECRET"], "HS256") }
   let(:valid_header) { { "HTTP_AUTHORIZATION" => "Bearer #{valid_token}", "JWT_SECRET" => ENV["JWT_SECRET"] } }
-  let!(:entries) { FactoryGirl.create_list(:entry, 10) }
 
   shared_examples_for "authorization!" do |path|
     it "403 when token has expired" do
@@ -35,7 +34,8 @@ describe ApiController do
     end
   end
 
-  describe "/v1/entries" do
+  describe "GET /v1/entries" do
+    let!(:entries) { FactoryGirl.create_list(:entry, 10) }
     it_should_behave_like "authorization!", "/v1/entries"
 
     it "render all entries" do
@@ -45,15 +45,49 @@ describe ApiController do
     end
   end
 
-  describe "/v1/entries/:id" do
+  describe "GET /v1/entries/:id" do
+    let!(:entry) { FactoryGirl.create(:entry) }
     it_should_behave_like "authorization!", "/v1/entries/1"
 
     it "show entry" do
-      entry = entries.sample
       get "/v1/entries/#{entry.id}", nil, valid_header
 
       expect(last_response.status).to eq 200
       expect(JSON.parse(last_response.body)).to eq JSON.parse(::Api::Resources::EntryResource.new(entry).to_json)
+    end
+  end
+
+  describe "POST /v1/entries" do
+    let(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
+    it_should_behave_like "authorization!", "/v1/entries"
+
+    it "can create new entry" do
+      expect { post "/v1/entries", params.to_json, valid_header }.to change(Entry, :count).by(1)
+    end
+
+    it "return 201 if created" do
+      post "/v1/entries", params.to_json, valid_header
+      expect(last_response.status).to eq 201
+    end
+  end
+
+  describe "POST /v1/entries/:id" do
+    let!(:entry) { FactoryGirl.create(:entry) }
+    let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
+    it_should_behave_like "authorization!", "/v1/entries/1"
+
+    it "not increase entry counts" do
+      expect { post "/v1/entries/#{entry.id}", params.to_json, valid_header }.not_to change(Entry, :count)
+    end
+
+    it "return 201 if updated" do
+      post "/v1/entries/#{entry.id}", params.to_json, valid_header
+      expect(last_response.status).to eq 201
+    end
+
+    it "entry update according to params" do
+      post "/v1/entries/#{entry.id}", params.to_json, valid_header
+      expect(entry.reload.attributes).to include params
     end
   end
 end

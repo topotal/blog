@@ -43,14 +43,12 @@ class ApiController < BaseController
 
   post "/v1/entries" do
     params = JSON.parse(request.body.read, symbolize_names: true)
-    title, content, eye_catching = params.values_at(:title, :content, :eye_catching)
-    json Entry.create(title: title, content: content, eye_catching: eye_catching)
+    Entry.create(params).valid? ? 201 : json(errors.messages)
   end
 
   post "/v1/entries/:id" do |id|
     params = JSON.parse(request.body.read, symbolize_names: true)
-    title, content, eye_catching = params.values_at(:title, :content, :eye_catching)
-    json Entry.find_by_id(id).update(title: title, content: content, eye_catching: eye_catching)
+    Entry.find_by_id(id).update(params) ? 201 : json(errors.messages)
   end
 
   post "/v1/users/register" do
