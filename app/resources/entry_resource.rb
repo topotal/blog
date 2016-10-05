@@ -115,7 +115,7 @@ module Api
         @content = entry.content
         @eye_catching = entry.eye_catching
         @created_at = entry.created_at
-        @update_at = entry.updated_at
+        @updated_at = entry.updated_at
         @publish_date = entry.publish_date
       end
     end
