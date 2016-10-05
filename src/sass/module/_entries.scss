@@ -1,8 +1,9 @@
 .entriesItem {
   width: 100%;
   padding-left: 50px;
-  margin-bottom: $MARGIN + 20px;
+  margin-bottom: $MARGIN - 20px;
   box-sizing: border-box;
+  border-bottom: 1px dotted #DDD;
 
   &:before {
     content: "\f097";
@@ -71,6 +72,7 @@
 
   .content {
     display: flex;
+    margin-bottom: $MARGIN + 20px;
 
     .eyeCatch {
       min-width: 240px;
@@ -136,13 +138,13 @@
   .disabled {
     display: none;
   }
-
 }
 
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
   .entriesItem {
-    padding-left: 20px;
+    padding-left: 0;
     &:before {
+      content: "";
       width: 20px;
       height: 20px;
       font-size: 1em;
