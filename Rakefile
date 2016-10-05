@@ -1,11 +1,19 @@
 require "bundler/setup"
-Bundler.require(:default)
+Bundler.require(:default, :development, :test)
 
 require "sinatra/activerecord/rake"
 
 namespace :db do
   task :load_config do
   end
+end
+
+task spec: ["spec:prepare", "spec:rspec"]
+namespace :spec do
+  task :prepare do
+    Rake::Task["db:test:prepare"].execute
+  end
+  RSpec::Core::RakeTask.new(:rspec) if defined?(RSpec::Core::RakeTask)
 end
 
 namespace :schema do
