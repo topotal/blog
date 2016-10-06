@@ -1,9 +1,12 @@
 require "spec_helper"
 
 describe ApiController do
+  def valid_header(name = nil)
+    token = JWT.encode({ iat: Time.now.to_i, exp: Time.now.to_i + 36000, iss: ENV["JWT_ISSUER"], name: name }, ENV["JWT_SECRET"], "HS256")
+    { "HTTP_AUTHORIZATION" => "Bearer #{token}", "JWT_SECRET" => ENV["JWT_SECRET"] }
+  end
+
   let(:app) { ApiController.new }
-  let(:valid_token) { JWT.encode({ iat: Time.now.to_i, exp: Time.now.to_i + 36000, iss: ENV["JWT_ISSUER"] }, ENV["JWT_SECRET"], "HS256") }
-  let(:valid_header) { { "HTTP_AUTHORIZATION" => "Bearer #{valid_token}", "JWT_SECRET" => ENV["JWT_SECRET"] } }
 
   shared_examples_for "invalid_body!" do |path|
     it "400 when body is invalid" do
@@ -42,7 +45,7 @@ describe ApiController do
   end
 
   describe "GET /v1/entries" do
-    let!(:entries) { FactoryGirl.create_list(:entry, 10) }
+    let!(:entries) { FactoryGirl.create_list(:entry, 10, :with_user) }
     it_should_behave_like "authorization!", "/v1/entries"
 
     it "render all entries" do
@@ -53,7 +56,7 @@ describe ApiController do
   end
 
   describe "GET /v1/entries/:id" do
-    let!(:entry) { FactoryGirl.create(:entry) }
+    let!(:entry) { FactoryGirl.create(:entry, :with_user) }
     it_should_behave_like "authorization!", "/v1/entries/1"
 
     it "show entry" do
@@ -65,27 +68,28 @@ describe ApiController do
   end
 
   describe "POST /v1/entries" do
-    let(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
+    let(:entry) { FactoryGirl.build(:entry, :with_user) }
+    let(:params) { entry.slice(:title, :content, :eye_catching, :publish_date) }
     it_should_behave_like "authorization!", "/v1/entries"
     it_should_behave_like "invalid_body!", "/v1/entries/1"
 
     it "can create new entry" do
-      expect { post "/v1/entries", params.to_json, valid_header }.to change(Entry, :count).by(1)
+      expect { post "/v1/entries", params.to_json, valid_header(entry.user.name) }.to change(Entry, :count).by(1)
     end
 
     it "return 201 if created" do
-      post "/v1/entries", params.to_json, valid_header
+      post "/v1/entries", params.to_json, valid_header(entry.user.name)
       expect(last_response.status).to eq 201
     end
 
     it "error messages if invalid parameters" do
-      post "/v1/entries", {}.to_json, valid_header
+      post "/v1/entries", {}.to_json, valid_header(entry.user.name)
       expect(last_response.status).to eq 400
     end
   end
 
   describe "POST /v1/entries/:id" do
-    let!(:entry) { FactoryGirl.create(:entry) }
+    let!(:entry) { FactoryGirl.create(:entry, :with_user) }
     let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }
     it_should_behave_like "authorization!", "/v1/entries/1"
     it_should_behave_like "invalid_body!", "/v1/entries/1"
