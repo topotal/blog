@@ -47,3 +47,28 @@ aside {
     }
   }
 }
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  aside {
+    #profile {
+      margin-bottom: 0;
+      h3 {
+      }
+
+      p {
+        img {
+        }
+        span, strong {
+        }
+        .name {
+          margin: 0 0 10px;
+        }
+        .detail {
+        }
+      }
+    }
+    .sns {
+      display: none;
+    }
+  }
+}
