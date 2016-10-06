@@ -5,6 +5,10 @@
   box-sizing: border-box;
   border-bottom: 1px dotted #DDD;
 
+  &:last-child {
+    border: none;
+  }
+
   &:before {
     content: "\f097";
     font-family: FontAwesome;
@@ -72,7 +76,7 @@
 
   .content {
     display: flex;
-    margin-bottom: $MARGIN * 2;
+    margin-bottom: 15px;
 
     .eyeCatch {
       width: 240px;
@@ -95,6 +99,25 @@
     .headline {
       max-width: 390px;
       overflow: hidden;
+    }
+  }
+
+  .more {
+    width: 100%;
+    height: 45px;
+    margin: 0 auto $MARGIN;
+    text-align: center;
+    line-height: 45px;
+    display: block;
+    border: 2px solid $BLUE;
+    box-sizing: border-box;
+    color: $BLUE;
+    border-radius: 5px;
+    text-decoration: none;
+
+    &:hover {
+      color: #FFF;
+      background-color: $BLUE;
     }
   }
 }

@@ -1,6 +1,7 @@
 <% @entries.each do |entry| %>
+  <% entryUrl = "/entry/" + entry.publish_date.strftime("%Y/%m/%d/#{entry.id}") %>
   <article class="entriesItem">
-    <h1 class="title"><a href="/entry/<%= entry.publish_date.strftime("%Y/%m/%d/#{entry.id}") %>"><%= entry.title %></a></h1>
+    <h1 class="title"><a href="<%= entryUrl %>"><%= entry.title %></a></h1>
     <!-- 詳細 -->
     <ul class="detail">
       <li class="item date"><%= entry.publish_date.strftime("%Y-%m-%d") %></li>
@@ -16,6 +17,8 @@
         最近 MinecraftPE も アップデートでかなりPC版に近づいてきたので RaspberryPi でサーバを建ててみました。少し躓いたのでまとめておきます。最近 MinecraftPE も アップデートでかなりPC版に近づいてきたので...
       </div>
     </div>
+    <!-- 続きを見るボタン -->
+    <a class="more" href="<%= entryUrl %>">続きを読む</a>
   </article>
 <% end %>
 <%= will_paginate(
