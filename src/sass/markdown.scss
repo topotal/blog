@@ -59,3 +59,46 @@
 
   }
 }
+
+@media screen and (max-width: $CONTENT_WIDTH - 300px) {
+  .content {
+    font-size: 0.8em;
+
+    // タイトル1
+    h1 {
+      font-size: 1.5em;
+      font-weight: normal;
+      border-bottom: 3px solid #CCC;
+      margin-top: 2.5em;
+    }
+
+    // タイトル2
+    h2 {
+      font-size: 1.3em;
+      font-weight: normal;
+      border-bottom: 2px solid #CCC;
+      margin-top: 1.3em;
+    }
+
+    a {
+    }
+
+    img {
+    }
+
+    pre {
+    }
+
+    table {
+      th {
+      }
+      th,
+      td {
+      }
+      tr {
+      }
+      tr:nth-child(2n) {
+      }
+    }
+  }
+}
