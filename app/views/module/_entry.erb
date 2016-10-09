@@ -1,20 +1,18 @@
 <article class="entry">
   <header>
     <h1 class="title"><%= @entry.title %></h1>
-    <ul class="items">
-      <li class="item time">
-        <i class="fa fa-calendar"></i>
-        <span><%= @entry.created_at.strftime("%Y-%m-%d") %></span>
-      </li>
-      <li class="item twitter">
-        <a href="https://twitter.com/share" class="twitter-share-button"{count}>tweet</a>
-      </li>
-      <li class="item facebook">
-        <div class="fb-like" data-layout="button_count"></div>
-      </li>
-      <li class="hateb">
-        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-      </li>
+    <ul class="detail">
+      <li class="item date"><%= @entry.publish_date.strftime("%Y-%m-%d") %></li>
+      <li class="item author">sawa-zen</li>
+      <!-- <li class="item twitter"> -->
+      <!--   <a href="https://twitter.com/share" class="twitter&#45;share&#45;button"{count}>tweet</a> -->
+      <!-- </li> -->
+      <!-- <li class="item facebook"> -->
+      <!--   <div class="fb&#45;like" data&#45;layout="button_count"></div> -->
+      <!-- </li> -->
+      <!-- <li class="hateb"> -->
+      <!--   <a href="http://b.hatena.ne.jp/entry/" class="hatena&#45;bookmark&#45;button" data&#45;hatena&#45;bookmark&#45;layout="standard&#45;balloon" data&#45;hatena&#45;bookmark&#45;lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st&#45;hatena.com/images/entry&#45;button/button&#45;only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a> -->
+      <!-- </li> -->
     </ul>
   </header>
   <div class="content">
