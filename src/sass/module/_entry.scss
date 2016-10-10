@@ -55,6 +55,10 @@
       }
     }
   }
+
+  .content {
+    margin-bottom: $MARGIN;
+  }
 }
 
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
