@@ -7,6 +7,12 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
   * [POST /api/v1/entries](#post-apiv1entries)
   * [POST /api/v1/entries/:id](#post-apiv1entriesid)
   * [DELETE /api/v1/entries/:id](#delete-apiv1entriesid)
+* [Image object](#image-object)
+  * [GET /api/v1/images](#get-apiv1images)
+  * [GET /api/v1/images/:id](#get-apiv1imagesid)
+  * [POST /api/v1/images](#post-apiv1images)
+  * [POST /api/v1/images/:id](#post-apiv1imagesid)
+  * [DELETE /api/v1/images/:id](#delete-apiv1imagesid)
 * [User object](#user-object)
   * [POST /api/v1/users/register](#post-apiv1usersregister)
   * [POST /api/v1/users/login](#post-apiv1userslogin)
@@ -214,6 +220,151 @@ Content-Type: application/json
   "updated_at": "2012-07-26T01:00:00+09:00",
   "publish_date": "2012-07-26T01:00:00+09:00",
   "author": "topotan"
+}
+```
+
+## Image object
+A image object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.
+
+### Properties
+* id
+  * image id
+  * Example: `1`
+  * Type: integer
+* url
+  * Image url path
+  * Example: `"assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Type: string
+* image_id
+  * image data id
+  * Example: `"8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Type: string
+* image_content_type
+  * Image content type
+  * Example: `"image/jpeg"`
+  * Type: string
+
+### GET /api/v1/images
+List exisiting images
+
+* page
+  * Example: `1`
+  * Type: integer
+
+```
+GET /api/v1/images?page=1 HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+    "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+    "image_content_type": "image/jpeg"
+  }
+]
+```
+
+### GET /api/v1/images/:id
+Information an exisiting image find by id
+
+```
+GET /api/v1/images/:id HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
+}
+```
+
+### POST /api/v1/images
+Create a new image
+
+* content
+  * Example: `"data:image/jpeg;base64,base64encodedstring......"`
+  * Type: string
+
+```
+POST /api/v1/images HTTP/1.1
+Content-Type: application/json
+Host: api.example.com
+
+{
+  "content": "data:image/jpeg;base64,base64encodedstring......"
+}
+```
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": 1,
+  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
+}
+```
+
+### POST /api/v1/images/:id
+Update an exisiting image
+
+* content
+  * Example: `"data:image/jpeg;base64,base64encodedstring......"`
+  * Type: string
+
+```
+POST /api/v1/images/:id HTTP/1.1
+Content-Type: application/json
+Host: api.example.com
+
+{
+  "content": "data:image/jpeg;base64,base64encodedstring......"
+}
+```
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": 1,
+  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
+}
+```
+
+### DELETE /api/v1/images/:id
+Delete an exisiting image
+
+```
+DELETE /api/v1/images/:id HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
 }
 ```
 

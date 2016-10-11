@@ -16,7 +16,10 @@ FactoryGirl.find_definitions
 DatabaseCleaner.strategy = :transaction
 DatabaseCleaner.clean
 
+Dir["./spec/supports/**/*.rb"].each(&method(:require))
+
 RSpec.configure do |config|
+  config.include ApiHelpers
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
 end

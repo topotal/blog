@@ -40,3 +40,8 @@ namespace :schema do
     File.write(document_path, Jdoc::Generator.call(JSON.parse(Api::Schema.to_json_schema)).gsub(/^ \*/, "  *"))
   end
 end
+
+task :console do
+  Rack::Builder.parse_file("config.ru")
+  binding.pry
+end
