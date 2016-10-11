@@ -12,8 +12,13 @@ gem "mysql2", "~> 0.3.20"
 gem "activerecord"
 gem "redcarpet"
 gem "bcrypt"
+gem "refile", require: ["refile", "refile/attachment/active_record"]
+gem "data_uri"
 
 group :development do
+  gem "pry"
+  gem "hirb"
+  gem "awesome_print"
   gem "rake"
   gem "sqlite3"
   gem "rubocop"

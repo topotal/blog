@@ -243,11 +243,114 @@
         "author"
       ],
       "title": "Entry object"
+    },
+    "images": {
+      "description": "A image object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.",
+      "links": [
+        {
+          "description": "List exisiting images",
+          "href": "/api/v1/images",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "properties": {
+              "page": {
+                "example": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "page"
+            ]
+          },
+          "title": "images"
+        },
+        {
+          "description": "Information an exisiting image find by id",
+          "href": "/api/v1/images/:id",
+          "method": "GET",
+          "rel": "self",
+          "title": "images"
+        },
+        {
+          "description": "Create a new image",
+          "href": "/api/v1/images",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "content": {
+                "example": "data:image/jpeg;base64,base64encodedstring......",
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ]
+          },
+          "title": "images"
+        },
+        {
+          "description": "Update an exisiting image",
+          "href": "/api/v1/images/:id",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "content": {
+                "example": "data:image/jpeg;base64,base64encodedstring......",
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ]
+          },
+          "title": "images"
+        },
+        {
+          "description": "Delete an exisiting image",
+          "href": "/api/v1/images/:id",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "images"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "image id",
+          "example": 1,
+          "type": "integer"
+        },
+        "url": {
+          "description": "Image url path",
+          "example": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+          "type": "string"
+        },
+        "image_id": {
+          "description": "image data id",
+          "example": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+          "type": "string"
+        },
+        "image_content_type": {
+          "description": "Image content type",
+          "example": "image/jpeg",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "image_id",
+        "image_content_type"
+      ],
+      "title": "Image object"
     }
   },
   "required": [
     "users",
-    "entries"
+    "entries",
+    "images"
   ],
   "title": "Topotal blog API v1"
 }

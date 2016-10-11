@@ -1,7 +1,6 @@
 require "json_world"
 
-require_relative "./user_resource.rb"
-require_relative "./entry_resource.rb"
+Dir[File.dirname(__FILE__) + "/*.rb"].each(&method(:require))
 
 module Api
   class Schema
@@ -12,6 +11,7 @@ module Api
 
     property :users, links: true, type: Api::Resources::UserResource
     property :entries, links: true, type: Api::Resources::EntryResource
+    property :images, links: true, type: Api::Resources::ImageResource
     link href: "https://blog.topotal.com", rel: "self"
   end
 end
