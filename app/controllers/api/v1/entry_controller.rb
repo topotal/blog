@@ -28,19 +28,6 @@ module Api
           [400, entry.errors.messages.to_json]
         end
       end
-
-      post "/v1/image" do
-        return unless params[:file]
-        access_path = "img/upload/#{params[:file][:filename]}"
-        save_path = "./public/" + access_path
-        File.open(save_path, "wb") do |f|
-          p params[:file][:tempfile]
-          f.write params[:file][:tempfile].read
-          Image.create(
-            url: access_path
-          )
-        end
-      end
     end
   end
 end
