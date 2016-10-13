@@ -59,6 +59,48 @@
   .content {
     margin-bottom: $MARGIN;
   }
+
+  .share {
+    background-color: #EEE;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    list-style: none;
+
+    li {
+      background-color: $BLUE;
+      margin: 0 5px;
+      max-width: 120px;
+      height: 60px;
+      overflow: hidden;
+      border-radius: 3px;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.twitter {
+        background-color: #55acee;
+      }
+
+      &.facebook {
+        background-color: #315096;
+      }
+
+      &.hatena {
+        background-color: #008fde;
+      }
+
+      &.pocket {
+        background-color: #ef4056;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
