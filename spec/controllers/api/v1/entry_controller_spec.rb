@@ -2,9 +2,10 @@ require "spec_helper"
 
 describe Api::V1::EntryController do
   let(:app) { Api::V1::EntryController.new }
+  let!(:entries) { FactoryGirl.create_list(:entry, 10, :with_user) }
+  let!(:entry) { entries.sample }
 
   describe "GET /" do
-    let!(:entries) { FactoryGirl.create_list(:entry, 10, :with_user) }
     let(:method) { get }
     let(:path) { "/" }
     it_should_behave_like "authorization!"
@@ -17,7 +18,6 @@ describe Api::V1::EntryController do
   end
 
   describe "GET /:id" do
-    let!(:entry) { FactoryGirl.create(:entry, :with_user) }
     let(:method) { get }
     let(:path) { "/#{entry.id}" }
     it_should_behave_like "authorization!"
@@ -31,7 +31,6 @@ describe Api::V1::EntryController do
   end
 
   describe "POST /" do
-    let(:entry) { FactoryGirl.build(:entry, :with_user) }
     let(:method) { post }
     let(:path) { "/" }
     let(:params) { entry.slice(:title, :content, :eye_catching, :publish_date) }
@@ -54,7 +53,6 @@ describe Api::V1::EntryController do
   end
 
   describe "POST /:id" do
-    let!(:entry) { FactoryGirl.create(:entry, :with_user) }
     let(:method) { post }
     let(:path) { "/#{entry.id}" }
     let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catching, :publish_date) }

@@ -2,9 +2,10 @@ require "spec_helper"
 
 describe Api::V1::ImageController do
   let(:app) { Api::V1::ImageController.new }
+  let!(:images) { FactoryGirl.create_list(:image, 10) }
+  let!(:image) { images.sample }
 
   describe "GET /" do
-    let!(:images) { FactoryGirl.create_list(:image, 10) }
     let(:method) { get }
     let(:path) { "/" }
     it_should_behave_like "authorization!"
@@ -17,7 +18,6 @@ describe Api::V1::ImageController do
   end
 
   describe "GET /:id" do
-    let!(:image) { FactoryGirl.create(:image) }
     let(:method) { get }
     let(:path) { "/#{image.id}" }
     it_should_behave_like "authorization!"
@@ -31,7 +31,6 @@ describe Api::V1::ImageController do
   end
 
   describe "POST /" do
-    let(:image) { FactoryGirl.build(:image) }
     let(:method) { post }
     let(:path) { "/" }
     let(:params) { { content: "data:text/plain;base64,base64encodedstring" } }
@@ -54,7 +53,6 @@ describe Api::V1::ImageController do
   end
 
   describe "POST /:id" do
-    let!(:image) { FactoryGirl.create(:image) }
     let(:method) { post }
     let(:path) { "/#{image.id}" }
     let(:params) { { content: "data:text/plain;base64,base64encodedstring" } }
