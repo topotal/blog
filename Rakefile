@@ -5,6 +5,7 @@ require "sinatra/activerecord/rake"
 
 namespace :db do
   task :load_config do
+    Dir[File.dirname(__FILE__) + "config/initializers/db/*.rb"].each(&method(:require))
   end
 end
 

@@ -60,6 +60,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.6.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -141,6 +142,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.20)
   onkcop
   pry
+  puma
   rake
   redcarpet
   refile
