@@ -8,18 +8,22 @@ gem "erubis", require: "erubis"
 gem "sinatra-activerecord", require: "sinatra/activerecord"
 gem "json_world"
 gem "jwt"
-gem "mysql2", "~> 0.3.20"
 gem "activerecord"
 gem "redcarpet"
 gem "bcrypt"
 gem "refile", require: ["refile", "refile/attachment/active_record"]
 gem "data_uri"
+gem "rake"
+
+group :production do
+  gem "puma"
+  gem "mysql2", "~> 0.3.20"
+end
 
 group :development do
   gem "pry"
   gem "hirb"
   gem "awesome_print"
-  gem "rake"
   gem "sqlite3"
   gem "rubocop"
   gem "onkcop"
