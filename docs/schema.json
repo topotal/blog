@@ -17,7 +17,7 @@
           "rel": "create",
           "schema": {
             "properties": {
-              "username": {
+              "name": {
                 "example": "topotan",
                 "type": "string"
               },
@@ -27,8 +27,20 @@
               }
             },
             "required": [
-              "username",
+              "name",
               "password"
+            ]
+          },
+          "targetSchema": {
+            "properties": {
+              "token": {
+                "description": "JWT Token issued by blog.topotal.com",
+                "example": "secret.token.issued-by-topotal",
+                "type": "string"
+              }
+            },
+            "required": [
+              "token"
             ]
           },
           "title": "register"
@@ -40,7 +52,7 @@
           "rel": "self",
           "schema": {
             "properties": {
-              "username": {
+              "name": {
                 "example": "topotan",
                 "type": "string"
               },
@@ -50,7 +62,7 @@
               }
             },
             "required": [
-              "username",
+              "name",
               "password"
             ]
           },
@@ -99,12 +111,10 @@
             "properties": {
               "page": {
                 "example": 1,
-                "type": "integer"
+                "pattern": "[0-9]+",
+                "type": "string"
               }
-            },
-            "required": [
-              "page"
-            ]
+            }
           },
           "title": "entries"
         },
@@ -256,12 +266,10 @@
             "properties": {
               "page": {
                 "example": 1,
-                "type": "integer"
+                "pattern": "[0-9]+",
+                "type": "string"
               }
-            },
-            "required": [
-              "page"
-            ]
+            }
           },
           "title": "images"
         },
