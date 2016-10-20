@@ -14,6 +14,7 @@ gem "bcrypt"
 gem "refile", require: ["refile", "refile/attachment/active_record"]
 gem "data_uri"
 gem "rake"
+gem "rack-json_schema"
 
 group :production do
   gem "puma"
