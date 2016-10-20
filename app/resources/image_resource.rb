@@ -27,7 +27,7 @@ module Api
         description: "List exisiting images",
         path: "/api/v1/images",
         parameters: {
-          page: { example: 1, type: Integer },
+          page: { example: 1, type: String, pattern: /[0-9]+/, optional: true },
         },
         rel: "instances"
       )
