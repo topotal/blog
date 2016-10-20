@@ -26,8 +26,15 @@ module Api
         description: "User registration",
         path: "/api/v1/users/register",
         parameters: {
-          username: { example: "topotan", type: String },
+          name: { example: "topotan", type: String },
           password: { example: "p@ssw0rd", type: String },
+        },
+        target_schema: {
+          token: {
+            description: "JWT Token issued by blog.topotal.com",
+            example: "secret.token.issued-by-topotal",
+            type: String,
+          },
         },
         rel: "create"
       )
@@ -38,7 +45,7 @@ module Api
         description: "User information if authenticate",
         path: "/api/v1/users/login",
         parameters: {
-          username: { example: "topotan", type: String },
+          name: { example: "topotan", type: String },
           password: { example: "p@ssw0rd", type: String },
         },
         target_schema: {
