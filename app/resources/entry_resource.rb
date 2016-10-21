@@ -21,7 +21,7 @@ module Api
         description: "List exisiting entries",
         path: "/api/v1/entries",
         parameters: {
-          page: { example: 1, type: Integer },
+          page: { example: 1, type: String, optional: true, pattern: /[0-9]+/ },
         },
         rel: "instances"
       )

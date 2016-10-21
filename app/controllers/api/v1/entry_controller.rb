@@ -6,9 +6,11 @@ module Api
       end
 
       get "/" do
-        json Entry.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |record|
-          ::Api::Resources::EntryResource.new(record)
-        end
+        json(
+          Entry.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |entry|
+            ::Api::Resources::EntryResource.new(entry)
+          end
+        )
       end
 
       get "/:id" do |id|
@@ -16,7 +18,8 @@ module Api
       end
 
       post "/" do
-        entry = User.find_by!(name: @payload["name"]).entries.create(parse_json_or_halt(request.body.read))
+        halt(404) unless (user = User.find_by(name: @payload["name"]))
+        entry = user.entries.create(parse_json_or_halt(request.body.read))
         entry.valid? ? [201, ::Api::Resources::EntryResource.new(entry).to_json] : [400, entry.errors.messages.to_json]
       end
 

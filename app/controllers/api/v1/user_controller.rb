@@ -9,7 +9,8 @@ module Api
 
       post "/login" do
         name, password = parse_json_or_halt(request.body.read).values_at(:name, :password)
-        halt(401) unless User.find_by!(name: name).authenticate(password)
+        halt(404) unless (user = User.find_by(name: name))
+        halt(401) unless user.authenticate(password)
         json({ token: tokenize(name) })
       end
     end

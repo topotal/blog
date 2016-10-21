@@ -62,7 +62,8 @@ List exisiting entries
 
 * page
   * Example: `1`
-  * Type: integer
+  * Type: string
+  * Pattern: `/[0-9]+/`
 
 ```
 GET /api/v1/entries?page=1 HTTP/1.1
@@ -249,7 +250,8 @@ List exisiting images
 
 * page
   * Example: `1`
-  * Type: integer
+  * Type: string
+  * Pattern: `/[0-9]+/`
 
 ```
 GET /api/v1/images?page=1 HTTP/1.1
@@ -384,7 +386,7 @@ A user object for topotal blog
 ### POST /api/v1/users/register
 User registration
 
-* username
+* name
   * Example: `"topotan"`
   * Type: string
 * password
@@ -397,7 +399,7 @@ Content-Type: application/json
 Host: api.example.com
 
 {
-  "username": "topotan",
+  "name": "topotan",
   "password": "p@ssw0rd"
 }
 ```
@@ -407,15 +409,14 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "topotan"
+  "token": "secret.token.issued-by-topotal"
 }
 ```
 
 ### POST /api/v1/users/login
 User information if authenticate
 
-* username
+* name
   * Example: `"topotan"`
   * Type: string
 * password
@@ -428,7 +429,7 @@ Content-Type: application/json
 Host: api.example.com
 
 {
-  "username": "topotan",
+  "name": "topotan",
   "password": "p@ssw0rd"
 }
 ```
