@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161023081413) do
     t.text     "eye_catch_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "publish_date",        null: false
+    t.datetime "publish_date", null: false
     t.integer  "user_id"
   end
 
