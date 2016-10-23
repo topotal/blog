@@ -9,7 +9,7 @@ module Api
       property(:id, type: Integer, description: "Entry id", example: 1)
       property(:title, type: String, description: "Entry title", example: "Blog title")
       property(:content, type: String, description: "Entry content", example: "Awesome blog content written in markdown")
-      property(:eye_catching, type: String, description: "Entry eye catching", example: "Awesome blog entry eye catching")
+      property(:eye_catch_image_url, type: String, description: "Entry eye-catching image url", example: "Awesome blog entry eye-catching image url")
       property(:created_at, type: Time, description: "Entry created at", example: "2012-07-26T01:00:00+09:00")
       property(:updated_at, type: Time, description: "Entry updated at", example: "2012-07-26T01:00:00+09:00")
       property(:publish_date, type: Time, description: "Entry publish time", example: "2012-07-26T01:00:00+09:00")
@@ -41,7 +41,7 @@ module Api
         path: "/api/v1/entries",
         parameters: {
           title: { example: "Awesome blog title", type: String },
-          eye_catching: { example: "Awesome blog eye catching", type: String },
+          eye_catch_image_url: { example: "Awesome blog eye-catching image url", type: String },
           content: { example: "Awesome blog content written in markdown", type: String },
           publish_date: { example: "2012-07-26T01:00:00+09:00", type: Date },
         },
@@ -55,7 +55,7 @@ module Api
         path: "/api/v1/entries/:id",
         parameters: {
           title: { example: "Awesome blog title", type: String },
-          eye_catching: { example: "Awesome blog eye catching", type: String },
+          eye_catch_image_url: { example: "Awesome blog eye-catching image url", type: String },
           content: { example: "Awesome blog content written in markdown", type: String },
           publish_date: { example: "2012-07-26T01:00:00+09:00", type: Date },
         },
@@ -70,12 +70,12 @@ module Api
         rel: "destroy"
       )
 
-      attr_reader :id, :title, :content, :eye_catching, :created_at, :updated_at, :publish_date, :author
+      attr_reader :id, :title, :content, :eye_catch_image_url, :created_at, :updated_at, :publish_date, :author
       def initialize(entry)
         @id = entry.id
         @title = entry.title
         @content = entry.content
-        @eye_catching = entry.eye_catching
+        @eye_catch_image_url = entry.eye_catch_image_url
         @created_at = entry.created_at
         @updated_at = entry.updated_at
         @publish_date = entry.publish_date

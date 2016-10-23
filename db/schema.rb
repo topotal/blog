@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007072030) do
+ActiveRecord::Schema.define(version: 20161023081413) do
 
   create_table "entries", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.text     "eye_catching"
+    t.text     "eye_catch_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "publish_date", null: false
