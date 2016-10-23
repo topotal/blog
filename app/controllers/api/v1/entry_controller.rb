@@ -2,6 +2,7 @@ module Api
   module V1
     class EntryController < ::Api::V1::BaseController
       before do
+        return if request.request_method == "OPTIONS"
         authorization!
       end
 
