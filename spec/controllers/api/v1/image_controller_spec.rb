@@ -13,6 +13,7 @@ describe Api::V1::ImageController do
     it "render all images" do
       get path, nil, valid_header
       expect(last_response.status).to eq 200
+      expect(last_response.headers["X-Total-Count"]).to eq 10
       expect(JSON.parse(last_response.body).length).to eq images.length
     end
   end

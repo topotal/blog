@@ -7,6 +7,7 @@ module Api
       end
 
       get "/" do
+        headers "X-total-count" => Entry.count
         json(
           Entry.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |entry|
             ::Api::Resources::EntryResource.new(entry)
