@@ -3,7 +3,7 @@
 ## Setup
 
 ```
-bundle install
+bundle install --without production
 ```
 
 ```
