@@ -10,6 +10,7 @@ module Api
       end
 
       before do
+        return if request.request_method == "OPTIONS"
         authorization!
       end
 
