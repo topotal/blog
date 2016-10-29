@@ -30,6 +30,10 @@ module Api
       before do
         content_type :json, charset: "utf-8"
       end
+
+      options "*" do
+        200
+      end
     end
   end
 end

@@ -10,10 +10,12 @@ module Api
       end
 
       before do
+        return if request.request_method == "OPTIONS"
         authorization!
       end
 
       get "/" do
+        headers "X-total-count" => Image.count
         json(
           Image.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |record|
             ::Api::Resources::ImageResource.new(record)
