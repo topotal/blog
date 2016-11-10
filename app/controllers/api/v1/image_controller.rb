@@ -31,7 +31,7 @@ module Api
         json = parse_json_or_halt(request.body.read)
         data_uri = parse_data_url(json[:content])
         image = Image.create(image: StringIO.new(data_uri.data), image_content_type: data_uri.content_type)
-        image.url = File.join(Refile.store.directory.gsub(%r{^public/}, ""), image.image_id)
+        image.url = File.join(Refile.store.directory.gsub(%r{^public/}, "/"), image.image_id)
         image.valid? ? [201, image.save && ::Api::Resources::ImageResource.new(image).to_json] : [400, image.errors.messages.to_json]
       end
 
