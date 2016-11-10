@@ -17,19 +17,4 @@ class IndexController < BaseController
     @entry.content = markdown.render(@entry.content) if @entry.content
     erb :entry
   end
-
-  get "/edit" do
-    @entry = Entry.new
-    erb :edit
-  end
-
-  get "/edit/:id" do |id|
-    p id
-    @entry = Entry.find_by_id!(id)
-    erb :edit
-  end
-
-  get "/upload" do
-    erb :upload
-  end
 end
