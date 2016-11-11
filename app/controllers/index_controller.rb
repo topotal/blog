@@ -4,8 +4,8 @@ class IndexController < BaseController
   get "/" do
     @entries = Entry.order("id DESC").page(params[:page])
 
-    @ogp_title = 'YAREKASU BLOG | Topotal.com'
-    @ogp_image_url = request.host + '/assets/img/top_ogp.png'
+    @ogp_title = "YAREKASU BLOG | Topotal.com"
+    @ogp_image_url = File.join(request.host, "/assets/img/top_ogp.png")
 
     erb :index
   end
@@ -19,8 +19,8 @@ class IndexController < BaseController
     @entry = Entry.find_by_id!(id)
     @entry.content = markdown.render(@entry.content) if @entry.content
 
-    @ogp_title = @entry.title + ' | Topotal.com'
-    @ogp_image_url = request.host + @entry.eye_catch_image_url
+    @ogp_title = File.join(@entry.title, " | Topotal.com")
+    @ogp_image_url = File.join(request.host, @entry.eye_catch_image_url)
 
     erb :entry
   end
