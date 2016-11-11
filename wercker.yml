@@ -30,4 +30,4 @@ build:
 
     - script:
         name: Run test
-        code: bundle exec rake spec
+        code: RAILS_ENV=test bundle exec rake spec
