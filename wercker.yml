@@ -13,8 +13,16 @@ build:
 
     - bundle-install
 
+    - script:
+        name: Outputs list of gems
+        code: bundle exec gem list
+
     - rails-database-yml:
       service: mysql-docker
+
+    - script:
+        name: show generated database.yml
+        code: cat config/database.yml
 
     - script:
         name: Run rubocop to app directory
