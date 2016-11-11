@@ -3,7 +3,7 @@ box: ruby:2.3.1
 services:
   - id: mysql
     env:
-      MYSQL_PASSWORD: mysecret_password
+      MYSQL_ROOT_PASSWORD: mysecret_password
 
 build:
   steps:
