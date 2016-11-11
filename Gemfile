@@ -15,10 +15,10 @@ gem "refile", require: ["refile", "refile/attachment/active_record"]
 gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
+gem "mysql2", "~> 0.3.20"
 
 group :production do
   gem "puma"
-  gem "mysql2", "~> 0.3.20"
 end
 
 group :development do
