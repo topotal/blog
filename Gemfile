@@ -5,6 +5,7 @@ gem "sinatra", require: "sinatra/base"
 gem "sinatra-contrib", require: "sinatra/contrib"
 gem "will_paginate", "~>3.0.5", require: ["will_paginate", "will_paginate/active_record"]
 gem "erubis", require: "erubis"
+gem "mysql2", "~> 0.3.20"
 gem "sinatra-activerecord", require: "sinatra/activerecord"
 gem "json_world"
 gem "jwt"
@@ -15,7 +16,6 @@ gem "refile", require: ["refile", "refile/attachment/active_record"]
 gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
-gem "mysql2", "~> 0.3.20"
 
 group :production do
   gem "puma"
