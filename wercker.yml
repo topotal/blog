@@ -1,0 +1,18 @@
+box: ruby:2.3.1
+
+build:
+  steps:
+    - script:
+        name: show ruby version
+        code: ruby -v
+
+    - bundle-install:
+        without: production
+
+    - script:
+        name: Run rubocop to app directory
+        code: bundle exec rubocop -c config/rubocop.yml app spec config config.ru
+
+    - script:
+        name: Run test
+        code: bundle exec rake spec
