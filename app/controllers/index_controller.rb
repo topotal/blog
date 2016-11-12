@@ -4,7 +4,7 @@ class IndexController < BaseController
   get "/" do
     @entries = Entry.order("id DESC").page(params[:page])
 
-    @ogp_title = "YAREKASU BLOG | Topotal.com"
+    @ogp_title = "YAREKASU BLOG"
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
@@ -23,7 +23,7 @@ class IndexController < BaseController
     @entry = Entry.find_by_id!(id)
     @entry.content = markdown.render(@entry.content) if @entry.content
 
-    @ogp_title = File.join(@entry.title, " | Topotal.com")
+    @ogp_title = @entry.title
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
