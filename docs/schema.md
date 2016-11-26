@@ -33,9 +33,9 @@ A entry object of topotal blog. All APIs requirements token with `Authorization:
   * Entry content
   * Example: `"Awesome blog content written in markdown"`
   * Type: string
-* eye_catching
-  * Entry eye catching
-  * Example: `"Awesome blog entry eye catching"`
+* eye_catch_image_url
+  * Entry eye-catching image url
+  * Example: `"Awesome blog entry eye-catching image url"`
   * Type: string
 * created_at
   * Entry created at
@@ -52,6 +52,10 @@ A entry object of topotal blog. All APIs requirements token with `Authorization:
   * Example: `"2012-07-26T01:00:00+09:00"`
   * Type: string
   * Format: date-time
+* published
+  * Entry is published
+  * Example: `true`
+  * Type: boolean
 * author
   * Entry author name
   * Example: `"topotan"`
@@ -79,10 +83,11 @@ Content-Type: application/json
     "id": 1,
     "title": "Blog title",
     "content": "Awesome blog content written in markdown",
-    "eye_catching": "Awesome blog entry eye catching",
+    "eye_catch_image_url": "Awesome blog entry eye-catching image url",
     "created_at": "2012-07-26T01:00:00+09:00",
     "updated_at": "2012-07-26T01:00:00+09:00",
     "publish_date": "2012-07-26T01:00:00+09:00",
+    "published": true,
     "author": "topotan"
   }
 ]
@@ -104,10 +109,11 @@ Content-Type: application/json
   "id": 1,
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
-  "eye_catching": "Awesome blog entry eye catching",
+  "eye_catch_image_url": "Awesome blog entry eye-catching image url",
   "created_at": "2012-07-26T01:00:00+09:00",
   "updated_at": "2012-07-26T01:00:00+09:00",
   "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": true,
   "author": "topotan"
 }
 ```
@@ -118,14 +124,17 @@ Create a new entry
 * title
   * Example: `"Awesome blog title"`
   * Type: string
-* eye_catching
-  * Example: `"Awesome blog eye catching"`
+* eye_catch_image_url
+  * Example: `"Awesome blog eye-catching image url"`
   * Type: string
 * content
   * Example: `"Awesome blog content written in markdown"`
   * Type: string
 * publish_date
   * Example: `"2012-07-26T01:00:00+09:00"`
+* published
+  * Example: `"true"`
+  * Type: boolean
 
 ```
 POST /api/v1/entries HTTP/1.1
@@ -134,9 +143,10 @@ Host: api.example.com
 
 {
   "title": "Awesome blog title",
-  "eye_catching": "Awesome blog eye catching",
+  "eye_catch_image_url": "Awesome blog eye-catching image url",
   "content": "Awesome blog content written in markdown",
-  "publish_date": "2012-07-26T01:00:00+09:00"
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": "true"
 }
 ```
 
@@ -148,10 +158,11 @@ Content-Type: application/json
   "id": 1,
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
-  "eye_catching": "Awesome blog entry eye catching",
+  "eye_catch_image_url": "Awesome blog entry eye-catching image url",
   "created_at": "2012-07-26T01:00:00+09:00",
   "updated_at": "2012-07-26T01:00:00+09:00",
   "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": true,
   "author": "topotan"
 }
 ```
@@ -162,14 +173,17 @@ Update an exisiting entry
 * title
   * Example: `"Awesome blog title"`
   * Type: string
-* eye_catching
-  * Example: `"Awesome blog eye catching"`
+* eye_catch_image_url
+  * Example: `"Awesome blog eye-catching image url"`
   * Type: string
 * content
   * Example: `"Awesome blog content written in markdown"`
   * Type: string
 * publish_date
   * Example: `"2012-07-26T01:00:00+09:00"`
+* published
+  * Example: `"true"`
+  * Type: boolean
 
 ```
 POST /api/v1/entries/:id HTTP/1.1
@@ -178,9 +192,10 @@ Host: api.example.com
 
 {
   "title": "Awesome blog title",
-  "eye_catching": "Awesome blog eye catching",
+  "eye_catch_image_url": "Awesome blog eye-catching image url",
   "content": "Awesome blog content written in markdown",
-  "publish_date": "2012-07-26T01:00:00+09:00"
+  "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": "true"
 }
 ```
 
@@ -192,10 +207,11 @@ Content-Type: application/json
   "id": 1,
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
-  "eye_catching": "Awesome blog entry eye catching",
+  "eye_catch_image_url": "Awesome blog entry eye-catching image url",
   "created_at": "2012-07-26T01:00:00+09:00",
   "updated_at": "2012-07-26T01:00:00+09:00",
   "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": true,
   "author": "topotan"
 }
 ```
@@ -216,10 +232,11 @@ Content-Type: application/json
   "id": 1,
   "title": "Blog title",
   "content": "Awesome blog content written in markdown",
-  "eye_catching": "Awesome blog entry eye catching",
+  "eye_catch_image_url": "Awesome blog entry eye-catching image url",
   "created_at": "2012-07-26T01:00:00+09:00",
   "updated_at": "2012-07-26T01:00:00+09:00",
   "publish_date": "2012-07-26T01:00:00+09:00",
+  "published": true,
   "author": "topotan"
 }
 ```

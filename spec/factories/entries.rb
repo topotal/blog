@@ -6,6 +6,7 @@ FactoryGirl.define do
     created_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
     updated_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
     publish_date { Faker::Time.between(DateTime.now - 1, DateTime.now) }
+    published { Faker::Boolean.boolean(0.9) }
 
     trait :with_user do
       user
