@@ -2,7 +2,7 @@ module Api
   module V1
     class BaseController < ::BaseController
       helpers do
-        def tokenize(name, issuer: ENV["JWT_ISSUER"], expire: 3600)
+        def tokenize(name, issuer: ENV["JWT_ISSUER"], expire: 28800)
           header = { iat: Time.now.to_i, exp: Time.now.to_i + expire, iss: ENV["JWT_ISSUER"] }
           content = { scopes: ["*"], name: name }
           JWT.encode(header.merge(content), ENV["JWT_SECRET"], "HS256")
