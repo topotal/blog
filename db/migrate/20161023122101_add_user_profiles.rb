@@ -1,10 +1,10 @@
 class AddUserProfiles < ActiveRecord::Migration
   def change
     create_table :user_profiles do |t|
-      t.references :user
       t.string :screen_name
-      t.string :image_path
       t.text :description
+      t.references :user
+      t.references :image
     end
   end
 end
