@@ -34,7 +34,7 @@ describe Api::V1::EntryController do
   describe "POST /" do
     let(:method) { post }
     let(:path) { "/" }
-    let(:params) { entry.slice(:title, :content, :eye_catch_image_url, :publish_date) }
+    let(:params) { entry.slice(:title, :content, :eye_catch_image_url, :publish_date, :published) }
     it_should_behave_like "authorization!"
     it_should_behave_like "invalid_body!"
 
@@ -56,7 +56,7 @@ describe Api::V1::EntryController do
   describe "POST /:id" do
     let(:method) { post }
     let(:path) { "/#{entry.id}" }
-    let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catch_image_url, :publish_date) }
+    let!(:params) { FactoryGirl.build(:entry).slice(:title, :content, :eye_catch_image_url, :publish_date, :published) }
     it_should_behave_like "authorization!"
     it_should_behave_like "invalid_body!"
 
