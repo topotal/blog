@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161023122101) do
+=======
+ActiveRecord::Schema.define(version: 20161126073543) do
+>>>>>>> a4b55329fc2eeb862014a64213e5f4c657d20adb
 
   create_table "entries", force: :cascade do |t|
     t.string   "title"
@@ -18,8 +22,9 @@ ActiveRecord::Schema.define(version: 20161023122101) do
     t.text     "eye_catch_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "publish_date", null: false
+    t.datetime "publish_date",                        null: false
     t.integer  "user_id"
+    t.boolean  "published",           default: false, null: false
   end
 
   create_table "images", force: :cascade do |t|

@@ -6,4 +6,5 @@ config/database.yml
 npm-debug.log
 vendor
 db/*.sqlite3
+.wercker
 !.gitkeep

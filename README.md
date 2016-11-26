@@ -1,5 +1,7 @@
 # Blog
 
+[![wercker status](https://app.wercker.com/status/a05e6eacc8d687b706137654d2e99369/s/master "wercker status")](https://app.wercker.com/project/byKey/a05e6eacc8d687b706137654d2e99369)
+
 ## Setup
 
 ```

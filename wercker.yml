@@ -1,0 +1,36 @@
+box: ruby:2.3.1
+
+services:
+  - id: mysql
+    env:
+      MYSQL_ROOT_PASSWORD: mysecret_password
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_password
+      MYSQL_DATABASE: test_database
+
+build:
+  steps:
+    - script:
+        name: show ruby version
+        code: ruby -v
+
+    - bundle-install
+
+    - script:
+        name: Outputs list of gems
+        code: bundle exec gem list
+
+    - rails-database-yml:
+      service: mysql-docker
+
+    - script:
+        name: show generated database.yml
+        code: cat config/database.yml
+
+    - script:
+        name: Run rubocop to app directory
+        code: bundle exec rubocop -c config/rubocop.yml app spec config config.ru
+
+    - script:
+        name: Run test
+        code: RACK_ENV=test bundle exec rake spec

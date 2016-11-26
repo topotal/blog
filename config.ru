@@ -14,7 +14,7 @@ Refile.secret_key = ENV["JWT_SECRET"] || "secret"
   "/app/controllers/*.rb",
   "/app/controllers/api/v1/*.rb",
   "/app/models/*.rb",
-].each { |file| Dir[File.dirname(__FILE__) + file].each(&method(:require)) }
+].each { |file| Dir[File.join(File.dirname(__FILE__), file)].sort.each(&method(:require)) }
 
 ROUTES = {
   "/" => IndexController,

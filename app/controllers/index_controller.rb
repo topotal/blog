@@ -3,6 +3,14 @@ class IndexController < BaseController
 
   get "/" do
     @entries = Entry.order("id DESC").page(params[:page])
+
+    @ogp_title = "YAREKASU BLOG"
+    @ogp_image_url = URI::HTTP.build(
+      scheme: request.scheme,
+      host: request.host,
+      path: "/assets/img/top_ogp.png"
+    ).to_s
+
     erb :index
   end
 
@@ -13,23 +21,15 @@ class IndexController < BaseController
       tables: true
     )
     @entry = Entry.find_by_id!(id)
-
     @entry.content = markdown.render(@entry.content) if @entry.content
+
+    @ogp_title = @entry.title
+    @ogp_image_url = URI::HTTP.build(
+      scheme: request.scheme,
+      host: request.host,
+      path: @entry.eye_catch_image_url
+    ).to_s
+
     erb :entry
-  end
-
-  get "/edit" do
-    @entry = Entry.new
-    erb :edit
-  end
-
-  get "/edit/:id" do |id|
-    p id
-    @entry = Entry.find_by_id!(id)
-    erb :edit
-  end
-
-  get "/upload" do
-    erb :upload
   end
 end

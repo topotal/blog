@@ -136,8 +136,8 @@
                 "example": "Awesome blog title",
                 "type": "string"
               },
-              "eye_catching": {
-                "example": "Awesome blog eye catching",
+              "eye_catch_image_url": {
+                "example": "Awesome blog eye-catching image url",
                 "type": "string"
               },
               "content": {
@@ -146,11 +146,15 @@
               },
               "publish_date": {
                 "example": "2012-07-26T01:00:00+09:00"
+              },
+              "published": {
+                "example": "true",
+                "type": "boolean"
               }
             },
             "required": [
               "title",
-              "eye_catching",
+              "eye_catch_image_url",
               "content",
               "publish_date"
             ]
@@ -168,8 +172,8 @@
                 "example": "Awesome blog title",
                 "type": "string"
               },
-              "eye_catching": {
-                "example": "Awesome blog eye catching",
+              "eye_catch_image_url": {
+                "example": "Awesome blog eye-catching image url",
                 "type": "string"
               },
               "content": {
@@ -178,11 +182,15 @@
               },
               "publish_date": {
                 "example": "2012-07-26T01:00:00+09:00"
+              },
+              "published": {
+                "example": "true",
+                "type": "boolean"
               }
             },
             "required": [
               "title",
-              "eye_catching",
+              "eye_catch_image_url",
               "content",
               "publish_date"
             ]
@@ -213,9 +221,9 @@
           "example": "Awesome blog content written in markdown",
           "type": "string"
         },
-        "eye_catching": {
-          "description": "Entry eye catching",
-          "example": "Awesome blog entry eye catching",
+        "eye_catch_image_url": {
+          "description": "Entry eye-catching image url",
+          "example": "Awesome blog entry eye-catching image url",
           "type": "string"
         },
         "created_at": {
@@ -236,6 +244,11 @@
           "format": "date-time",
           "type": "string"
         },
+        "published": {
+          "description": "Entry is published",
+          "example": true,
+          "type": "boolean"
+        },
         "author": {
           "description": "Entry author name",
           "example": "topotan",
@@ -246,10 +259,11 @@
         "id",
         "title",
         "content",
-        "eye_catching",
+        "eye_catch_image_url",
         "created_at",
         "updated_at",
         "publish_date",
+        "published",
         "author"
       ],
       "title": "Entry object"

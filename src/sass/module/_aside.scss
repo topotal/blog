@@ -1,7 +1,7 @@
 aside {
   #profile {
     text-align: center;
-    margin-bottom: $MARGIN;
+    margin-bottom: 20px;
     padding: 20px;
     background-color: #EEE;
 
@@ -33,42 +33,16 @@ aside {
       }
     }
   }
-
-  .sns {
-    margin: 0 0 $MARGIN 0;
-    padding: 0;
-    list-style: none;
-    line-height: normal;
-    display: flex;
-
-    li {
-      display: block;
-      margin-right: 5px;
-    }
-  }
 }
 
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
   aside {
     #profile {
-      margin-bottom: 0;
-      h3 {
-      }
-
       p {
-        img {
-        }
-        span, strong {
-        }
         .name {
           margin: 0 0 10px;
         }
-        .detail {
-        }
       }
-    }
-    .sns {
-      display: none;
     }
   }
 }

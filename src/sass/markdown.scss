@@ -1,7 +1,10 @@
 @import "module/const";
 
-.content {
+.entryContent {
   font-size: 1em;
+  line-height: 1.5;
+  color: $BLACK;
+  font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 
   // タイトル1
   h1 {
