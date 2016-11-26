@@ -80,4 +80,21 @@ describe Api::V1::EntryController do
       expect(last_response.status).to eq 400
     end
   end
+
+  describe "DELETE /:id" do
+    let(:method) { delete }
+    let(:path) { "/#{entry.id}" }
+    it_should_behave_like "authorization!"
+
+    it "can delete new entry and return 200 if deleted" do
+      expect { delete path, nil, valid_header(entry.user.name) }.to change(Entry, :count).by(-1)
+      expect(last_response.status).to eq 200
+    end
+
+    it "can not show deleted entry" do
+      delete path, nil, valid_header(entry.user.name)
+      get path, nil, valid_header
+      expect(last_response.status).to eq 404
+    end
+  end
 end
