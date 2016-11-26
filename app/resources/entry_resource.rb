@@ -13,6 +13,7 @@ module Api
       property(:created_at, type: Time, description: "Entry created at", example: "2012-07-26T01:00:00+09:00")
       property(:updated_at, type: Time, description: "Entry updated at", example: "2012-07-26T01:00:00+09:00")
       property(:publish_date, type: Time, description: "Entry publish time", example: "2012-07-26T01:00:00+09:00")
+      property(:published, type: TrueClass, description: "Entry is published", example: true)
       property(:author, type: String, description: "Entry author name", example: "topotan")
 
       link(
@@ -44,6 +45,7 @@ module Api
           eye_catch_image_url: { example: "Awesome blog eye-catching image url", type: String },
           content: { example: "Awesome blog content written in markdown", type: String },
           publish_date: { example: "2012-07-26T01:00:00+09:00", type: Date },
+          published: { example: "true", type: TrueClass, optional: true },
         },
         rel: "create"
       )
@@ -58,6 +60,7 @@ module Api
           eye_catch_image_url: { example: "Awesome blog eye-catching image url", type: String },
           content: { example: "Awesome blog content written in markdown", type: String },
           publish_date: { example: "2012-07-26T01:00:00+09:00", type: Date },
+          published: { example: "true", type: TrueClass, optional: true },
         },
         rel: "create"
       )
@@ -70,7 +73,7 @@ module Api
         rel: "destroy"
       )
 
-      attr_reader :id, :title, :content, :eye_catch_image_url, :created_at, :updated_at, :publish_date, :author
+      attr_reader :id, :title, :content, :eye_catch_image_url, :created_at, :updated_at, :publish_date, :author, :published
       def initialize(entry)
         @id = entry.id
         @title = entry.title
@@ -79,6 +82,7 @@ module Api
         @created_at = entry.created_at
         @updated_at = entry.updated_at
         @publish_date = entry.publish_date
+        @published = entry.published
         @author = entry.user.name
       end
     end
