@@ -69,4 +69,21 @@ describe Api::V1::ImageController do
       expect(last_response.status).to eq 201
     end
   end
+
+  describe "DELETE /:id" do
+    let(:method) { delete }
+    let(:path) { "/#{image.id}" }
+    it_should_behave_like "authorization!"
+
+    it "can delete new image and return 200 if deleted" do
+      expect { delete path, nil, valid_header }.to change(Image, :count).by(-1)
+      expect(last_response.status).to eq 200
+    end
+
+    it "can not show deleted image" do
+      delete path, nil, valid_header
+      get path, nil, valid_header
+      expect(last_response.status).to eq 404
+    end
+  end
 end

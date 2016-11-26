@@ -24,7 +24,8 @@ module Api
       end
 
       get "/:id" do |id|
-        json ::Api::Resources::ImageResource.new(Image.find_by_id(id))
+        halt(404) unless (image = Image.find_by_id(id))
+        json ::Api::Resources::ImageResource.new(image)
       end
 
       post "/" do
@@ -44,6 +45,10 @@ module Api
         else
           [400, image.errors.messages.to_json]
         end
+      end
+
+      delete "/:id" do |id|
+        json ::Api::Resources::ImageResource.new(Image.destroy(id))
       end
     end
   end
