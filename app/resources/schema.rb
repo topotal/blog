@@ -10,6 +10,7 @@ module Api
     description "Topotal API v1 interface document written in JSON Hyper Schema draft v4"
 
     property :users, links: true, type: Api::Resources::UserResource
+    property :user_profiles, links: true, type: Api::Resources::UserProfileResource
     property :entries, links: true, type: Api::Resources::EntryResource
     property :images, links: true, type: Api::Resources::ImageResource
     link href: "https://blog.topotal.com", rel: "self"
