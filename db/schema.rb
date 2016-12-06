@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161126073543) do
   create_table "user_profiles", force: :cascade do |t|
     t.string  "screen_name"
     t.text    "description"
+    t.string  "image_url"
     t.string  "image_id"
     t.string  "image_filename"
     t.integer "image_filesize"
