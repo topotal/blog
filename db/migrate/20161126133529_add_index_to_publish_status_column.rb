@@ -1,5 +1,5 @@
 class AddIndexToPublishStatusColumn < ActiveRecord::Migration
   def change
-    add_index :entry, :published
+    add_index :entries, :published
   end
 end
