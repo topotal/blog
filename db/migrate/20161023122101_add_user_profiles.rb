@@ -8,6 +8,8 @@ class AddUserProfiles < ActiveRecord::Migration
       t.string :image_filename
       t.integer :image_filesize
       t.string :image_content_type
+      t.datetime :created_at
+      t.datetime :updated_at
       t.references :user
     end
   end
