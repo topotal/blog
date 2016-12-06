@@ -1,7 +1,15 @@
 FactoryGirl.define do
   factory :user_profile do
     screen_name { Faker::Name.name }
-    image_path { Faker::File.file_name("assets/img/upload", Faker::Crypto.md5) }
     description { Faker::Lorem.sentence }
+    image_url { Faker::File.file_name("assets/img/upload", Faker::Crypto.md5) }
+    image_id { Faker::Crypto.md5 }
+    image_content_type { "image/jpeg" }
+    created_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
+    updated_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
+
+    trait :with_user do
+      user
+    end
   end
 end

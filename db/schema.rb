@@ -34,16 +34,13 @@ ActiveRecord::Schema.define(version: 20161126073543) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.string   "screen_name"
-    t.text     "description"
-    t.string   "image_id"
-    t.string   "image_url"
-    t.string   "image_filename"
-    t.integer  "image_filesize"
-    t.string   "image_content_type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "screen_name"
+    t.text    "description"
+    t.string  "image_id"
+    t.string  "image_filename"
+    t.integer "image_filesize"
+    t.string  "image_content_type"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
