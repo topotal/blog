@@ -3,6 +3,7 @@ class AddUserProfiles < ActiveRecord::Migration
     create_table :user_profiles do |t|
       t.string :screen_name
       t.text :description
+      t.string :image_url
       t.string :image_id
       t.string :image_filename
       t.integer :image_filesize
