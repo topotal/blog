@@ -62,7 +62,7 @@ module Api
         description: "User profile registration",
         path: "/api/v1/user_profiles/register",
         parameters: {
-          screen_name: { example: "Topotan da Silva Santos Júnior", type: String},
+          screen_name: { example: "Topotan da Silva Santos Júnior", type: String },
           description: { example: "Super awesome bot", type: String },
           content: { example: "data:image/jpeg;base64,base64encodedstring......", type: String },
         },

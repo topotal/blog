@@ -20,9 +20,8 @@ describe Api::V1::UserProfileController do
   describe "POST /register" do
     let(:method) { post }
     let(:path) { "/register" }
-    let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge( { content: "data:text/plain;base64,base64encodedstring" } ) }
+    let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge({ content: "data:text/plain;base64,base64encodedstring" }) }
     it_should_behave_like "authorization!"
-
 
     it "not increase user_profile counts" do
       expect { post path, params.to_json, valid_header(user_profile.user.name) }.to change(UserProfile, :count).by(1)
