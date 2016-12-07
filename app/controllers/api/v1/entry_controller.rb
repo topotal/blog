@@ -16,7 +16,8 @@ module Api
       end
 
       get "/:id" do |id|
-        json ::Api::Resources::EntryResource.new(Entry.find_by_id(id))
+        halt(404) unless (entry = Entry.find_by_id(id))
+        json ::Api::Resources::EntryResource.new(entry)
       end
 
       post "/" do
@@ -32,6 +33,10 @@ module Api
         else
           [400, entry.errors.messages.to_json]
         end
+      end
+
+      delete "/:id" do |id|
+        json ::Api::Resources::EntryResource.new(Entry.destroy(id))
       end
     end
   end

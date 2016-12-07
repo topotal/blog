@@ -2,7 +2,7 @@ class IndexController < BaseController
   register WillPaginate::Sinatra
 
   get "/" do
-    @entries = Entry.order("id DESC").page(params[:page])
+    @entries = Entry.where(published: true).order("id DESC").page(params[:page])
 
     @ogp_title = "YAREKASU BLOG"
     @ogp_image_url = URI::HTTP.build(
@@ -21,6 +21,8 @@ class IndexController < BaseController
       tables: true
     )
     @entry = Entry.find_by_id!(id)
+    halt(404) unless @entry.published
+
     @entry.content = markdown.render(@entry.content) if @entry.content
 
     @ogp_title = @entry.title

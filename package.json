@@ -1,17 +1,20 @@
 {
-  "name": "sawa-zen.com",
+  "name": "blog.topotal.com",
   "version": "1.0.0",
-  "description": "sawa-zen.com ====",
-  "main": "index.js",
+  "description": "blog.topotal.com ====",
   "scripts": {
     "start": "npm run build & npm run watch & npm run rackup-public",
     "rackup": "JWT_SECRET='yoursecret' JWT_ISSUER='blog.topotal.com' bundle exec rackup",
     "rackup-public": "JWT_SECRET='yoursecret' JWT_ISSUER='blog.topotal.com' bundle exec rackup -o 0.0.0.0",
     "build": "npm run build:sass & npm run build:js",
-    "build:js": "browserify src/js/app.js -t babelify --outfile public/assets/js/bundle.js",
+    "build:js": "npm run build:js-top && npm run build:js-entry",
+    "build:js-top": "browserify src/js/top.js -t babelify --outfile public/assets/js/top.js",
+    "build:js-entry": "browserify src/js/entry.js -t babelify --outfile public/assets/js/entry.js",
     "build:sass": "node-sass src/sass --output public/assets/css",
     "watch": "npm run watch:sass & npm run watch:js",
-    "watch:js": "watchify src/js/app.js -t babelify --outfile public/assets/js/bundle.js",
+    "watch:js": "npm run watch:js-top & npm run watch:js-entry",
+    "watch:js-top": "watchify src/js/top.js -t babelify --outfile public/assets/js/top.js",
+    "watch:js-entry": "watchify src/js/entry.js -t babelify --outfile public/assets/js/entry.js",
     "watch:sass": "node-sass src/sass --output public/assets/css -w"
   },
   "repository": {

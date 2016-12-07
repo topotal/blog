@@ -59,7 +59,18 @@
     tr:nth-child(2n) {
       background-color: #f8f8f8;
     }
+  }
 
+  p {
+    code {
+      display: inline;
+      padding: 2px;
+      font-size: 0.8em;
+      background-color: transparent;
+      border: 1px solid #CCC;
+      border-radius: 3px;
+      margin: 0 5px;
+    }
   }
 }
 
