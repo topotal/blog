@@ -20,9 +20,8 @@ describe Api::V1::UserProfileController do
   describe "POST /register" do
     let(:method) { post }
     let(:path) { "/register" }
-    let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge(content: "data:text/plain;base64,base64encodedstring") }
+    let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge( { content: "data:text/plain;base64,base64encodedstring" } ) }
     it_should_behave_like "authorization!"
-    it_should_behave_like "invalid_body!"
 
 
     it "not increase user_profile counts" do
@@ -34,13 +33,8 @@ describe Api::V1::UserProfileController do
       expect(last_response.status).to eq 201
     end
 
-    it "user_profile update according to parameters" do
-      post path, params.to_json, valid_header(user_profile.user.name)
-      expect(user_profile.reload.attributes).to include params
-    end
-
     it "return error messages and not updated if invalid parameters" do
-      post path, { title: nil }.to_json, valid_header(user_profile.user.name)
+      post path, {}.to_json, valid_header(user_profile.user.name)
       expect(user_profile.reload).to eq user_profile
       expect(last_response.status).to eq 400
     end
