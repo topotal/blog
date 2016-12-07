@@ -32,8 +32,8 @@ module Api
           user_id: user.id
         )
         user_profile.image_url = File.join(Refile.store.directory.gsub(%r{^public/}, "/"), user_profile.image_id)
-        user_profile.valid? ? [201, user_profile.save && ::Api::Resources::UserProfileResource.new(user_profile).to_json] 
-          : [400, user_profile.errors.messages.to_json]
+        json = ::Api::Resources::UserProfileResource.new(user_profile).to_json
+        user_profile.valid? ? [201, user_profile.save && json] : [400, user_profile.errors.messages.to_json]
       end
     end
   end
