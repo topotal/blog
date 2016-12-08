@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title><%= @title %>YAREKASU BLOG</title>
-  <meta content="Topotal ブログ" name="description">
+  <meta name="description" content="<%= @description %>">
   <link rel="shortcut icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +20,8 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
   <!-- OGP Facebook -->
-  <meta property="og:title" content="<%= @ogp_title %>" />
+  <meta property="og:title" content="<%= @title %>" />
+  <meta property="og:description" content="<%= @description %>" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<%= request.url %>" />
   <meta property="og:image" content="<%= @ogp_image_url %>" />

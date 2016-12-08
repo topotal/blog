@@ -4,8 +4,8 @@ class IndexController < BaseController
   get "/" do
     @entries = Entry.where(published: true).order("id DESC").page(params[:page])
 
-    @title = ""
-    @ogp_title = "YAREKASU BLOG"
+    @title = "YAREKASU BLOG"
+    @description = "Topotalメンバーで運営している技術ブログ？です。「うだうだ言ってねぇでいいからやれカス。」と言われながらインフラからフロントエンドまで様々な分野のノウハウをアウトプットさせられてます。"
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
@@ -26,8 +26,8 @@ class IndexController < BaseController
 
     @entry.content = markdown.render(@entry.content) if @entry.content
 
-    @title = @entry.title + " | "
-    @ogp_title = @entry.title
+    @title = @entry.title + " | YAREKASU BLOG"
+    @description = @entry.content.truncate(100)
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
