@@ -4,7 +4,7 @@ module Api
       include JsonWorld::DSL
 
       title "UserProfile object"
-      description "A user object for topotal blog"
+      description "A user profile object for topotal blog"
 
       property(
         :id,

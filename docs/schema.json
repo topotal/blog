@@ -100,7 +100,7 @@
       "title": "User object"
     },
     "user_profiles": {
-      "description": "A user object for topotal blog",
+      "description": "A user profile object for topotal blog",
       "links": [
         {
           "description": "A user profile",
