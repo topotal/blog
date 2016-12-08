@@ -464,7 +464,7 @@ Content-Type: application/json
 ```
 
 ## UserProfile object
-A user object for topotal blog
+A user profile object for topotal blog
 
 ### Properties
 * id
