@@ -10,6 +10,7 @@ class Main {
    * @constructor
    */
   constructor() {
+    // ページのトラッキング
     this._tracker = new GATracker();
     this._tracker.sendPage();
   }

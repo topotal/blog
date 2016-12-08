@@ -10,6 +10,7 @@ class Entry {
    * @constructor
    */
   constructor() {
+    // ページのトラッキング
     this._tracker = new GATracker();
     this._tracker.sendPage();
   }
@@ -18,4 +19,3 @@ class Entry {
 window.addEventListener('load', () => {
   new Entry();
 });
-

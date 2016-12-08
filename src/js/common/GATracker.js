@@ -20,10 +20,7 @@ export default class GATracker {
     let path = window.location.pathname;
     let host = window.location.hostname;
     let title = document.title;
-    this._visitor.pageview(
-      path,
-      host,
-      title
-    ).send();
+
+    this._visitor.pageview(path, host, title).send();
   }
 }
