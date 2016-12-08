@@ -4,6 +4,7 @@ class IndexController < BaseController
   get "/" do
     @entries = Entry.where(published: true).order("id DESC").page(params[:page])
 
+    @title = ""
     @ogp_title = "YAREKASU BLOG"
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
@@ -25,6 +26,7 @@ class IndexController < BaseController
 
     @entry.content = markdown.render(@entry.content) if @entry.content
 
+    @title = @entry.title + " | "
     @ogp_title = @entry.title
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
