@@ -99,6 +99,87 @@
       ],
       "title": "User object"
     },
+    "user_profiles": {
+      "description": "A user profile object for topotal blog",
+      "links": [
+        {
+          "description": "A user profile",
+          "href": "/api/v1/user_profiles",
+          "method": "GET",
+          "rel": "self",
+          "title": "user_profiles"
+        },
+        {
+          "description": "User profile registration",
+          "href": "/api/v1/user_profiles/register",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "screen_name": {
+                "example": "Topotan da Silva Santos Júnior",
+                "type": "string"
+              },
+              "description": {
+                "example": "Super awesome bot",
+                "type": "string"
+              },
+              "content": {
+                "example": "data:image/jpeg;base64,base64encodedstring......",
+                "type": "string"
+              }
+            },
+            "required": [
+              "screen_name",
+              "description",
+              "content"
+            ]
+          },
+          "title": "user_profiles"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "User profile id",
+          "example": 1,
+          "type": "integer"
+        },
+        "screen_name": {
+          "description": "Screen name",
+          "example": "Topotan da Silva Santos Júnior",
+          "type": "string"
+        },
+        "description": {
+          "description": "User description",
+          "example": "Topotan",
+          "type": "string"
+        },
+        "image_url": {
+          "description": "Image url path",
+          "example": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+          "type": "string"
+        },
+        "image_id": {
+          "description": "Image id",
+          "example": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+          "type": "string"
+        },
+        "image_content_type": {
+          "description": "Image content type",
+          "example": "image/jpeg",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "screen_name",
+        "description",
+        "image_url",
+        "image_id",
+        "image_content_type"
+      ],
+      "title": "UserProfile object"
+    },
     "entries": {
       "description": "A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.",
       "links": [
@@ -371,6 +452,7 @@
   },
   "required": [
     "users",
+    "user_profiles",
     "entries",
     "images"
   ],
