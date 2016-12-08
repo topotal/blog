@@ -16,6 +16,9 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
 * [User object](#user-object)
   * [POST /api/v1/users/register](#post-apiv1usersregister)
   * [POST /api/v1/users/login](#post-apiv1userslogin)
+* [UserProfile object](#userprofile-object)
+  * [GET /api/v1/user_profiles](#get-apiv1user_profiles)
+  * [POST /api/v1/user_profiles/register](#post-apiv1user_profilesregister)
 
 ## Entry object
 A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.
@@ -457,6 +460,96 @@ Content-Type: application/json
 
 {
   "token": "secret.token.issued-by-topotal"
+}
+```
+
+## UserProfile object
+A user profile object for topotal blog
+
+### Properties
+* id
+  * User profile id
+  * Example: `1`
+  * Type: integer
+* screen_name
+  * Screen name
+  * Example: `"Topotan da Silva Santos Júnior"`
+  * Type: string
+* description
+  * User description
+  * Example: `"Topotan"`
+  * Type: string
+* image_url
+  * Image url path
+  * Example: `"assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Type: string
+* image_id
+  * Image id
+  * Example: `"8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Type: string
+* image_content_type
+  * Image content type
+  * Example: `"image/jpeg"`
+  * Type: string
+
+### GET /api/v1/user_profiles
+A user profile
+
+```
+GET /api/v1/user_profiles HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "screen_name": "Topotan da Silva Santos Júnior",
+  "description": "Topotan",
+  "image_url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
+}
+```
+
+### POST /api/v1/user_profiles/register
+User profile registration
+
+* screen_name
+  * Example: `"Topotan da Silva Santos Júnior"`
+  * Type: string
+* description
+  * Example: `"Super awesome bot"`
+  * Type: string
+* content
+  * Example: `"data:image/jpeg;base64,base64encodedstring......"`
+  * Type: string
+
+```
+POST /api/v1/user_profiles/register HTTP/1.1
+Content-Type: application/json
+Host: api.example.com
+
+{
+  "screen_name": "Topotan da Silva Santos Júnior",
+  "description": "Super awesome bot",
+  "content": "data:image/jpeg;base64,base64encodedstring......"
+}
+```
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": 1,
+  "screen_name": "Topotan da Silva Santos Júnior",
+  "description": "Topotan",
+  "image_url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
 }
 ```
 
