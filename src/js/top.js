@@ -12,7 +12,7 @@ class Main {
   constructor() {
     // ページのトラッキング
     this._tracker = new GATracker();
-    this._tracker.sendPage();
+    this._tracker.sendPageView();
   }
 }
 

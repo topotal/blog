@@ -16,9 +16,9 @@ export default class GATracker {
   /**
    * トップページのトラッキングをします。
    */
-  sendPage() {
-    let path = window.location.pathname;
-    let host = window.location.hostname;
+  sendPageView() {
+    let path = document.location.pathname;
+    let host = document.location.toString();
     let title = document.title;
 
     this._visitor.pageview(path, host, title).send();
