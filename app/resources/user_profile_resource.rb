@@ -60,7 +60,7 @@ module Api
         :user_profiles,
         method: "POST",
         description: "User profile registration",
-        path: "/api/v1/user_profiles/register",
+        path: "/api/v1/user_profiles",
         parameters: {
           screen_name: { example: "Topotan da Silva Santos Júnior", type: String },
           description: { example: "Super awesome bot", type: String },

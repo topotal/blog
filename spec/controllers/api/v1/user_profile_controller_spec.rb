@@ -17,9 +17,9 @@ describe Api::V1::UserProfileController do
     end
   end
 
-  describe "POST /register" do
+  describe "POST /" do
     let(:method) { post }
-    let(:path) { "/register" }
+    let(:path) { "/" }
     let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge({ content: "data:text/plain;base64,base64encodedstring" }) }
     it_should_behave_like "authorization!"
 

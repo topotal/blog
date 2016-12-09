@@ -18,7 +18,7 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
   * [POST /api/v1/users/login](#post-apiv1userslogin)
 * [UserProfile object](#userprofile-object)
   * [GET /api/v1/user_profiles](#get-apiv1user_profiles)
-  * [POST /api/v1/user_profiles/register](#post-apiv1user_profilesregister)
+  * [POST /api/v1/user_profiles](#post-apiv1user_profiles)
 
 ## Entry object
 A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.
@@ -514,7 +514,7 @@ Content-Type: application/json
 }
 ```
 
-### POST /api/v1/user_profiles/register
+### POST /api/v1/user_profiles
 User profile registration
 
 * screen_name
@@ -528,7 +528,7 @@ User profile registration
   * Type: string
 
 ```
-POST /api/v1/user_profiles/register HTTP/1.1
+POST /api/v1/user_profiles HTTP/1.1
 Content-Type: application/json
 Host: api.example.com
 

@@ -111,7 +111,7 @@
         },
         {
           "description": "User profile registration",
-          "href": "/api/v1/user_profiles/register",
+          "href": "/api/v1/user_profiles",
           "method": "POST",
           "rel": "create",
           "schema": {

@@ -19,7 +19,7 @@ module Api
         json ::Api::Resources::UserProfileResource.new(UserProfile.find_by(user_id: user.id))
       end
 
-      post "/register" do
+      post "/" do
         halt(404) unless (user = User.find_by(name: @payload["name"]))
         screen_name, description, content = parse_json_or_halt(request.body.read).values_at(:screen_name, :description, :content)
         data_uri = parse_data_url(content)
