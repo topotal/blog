@@ -1,5 +1,5 @@
 rackup "config.ru"
-environment "production"
+environment ENV['RAILS_ENV']
 
 daemonize true
 
