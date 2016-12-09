@@ -12,7 +12,7 @@
       "links": [
         {
           "description": "User registration",
-          "href": "/api/v1/users/register",
+          "href": "/api/v1/users",
           "method": "POST",
           "rel": "create",
           "schema": {
