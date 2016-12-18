@@ -3,6 +3,7 @@ public/assets/js/*
 public/assets/css/*
 public/assets/img/upload/*
 config/database.yml
+tmp/
 npm-debug.log
 vendor
 db/*.sqlite3
