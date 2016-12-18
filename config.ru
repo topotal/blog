@@ -22,6 +22,7 @@ ROUTES = {
   "/api/v1/users" => Api::V1::UserController,
   "/api/v1/user_profiles" => Api::V1::UserProfileController,
   "/api/v1/images" => Api::V1::ImageController,
+  "/attachments" => Refile::App,
 }.freeze
 
 schema = JSON.parse(Api::Schema.to_json_schema)
