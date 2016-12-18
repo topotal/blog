@@ -254,7 +254,7 @@ A image object of topotal blog. All APIs requirements token with `Authorization:
   * Type: integer
 * url
   * Image url path
-  * Example: `"assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Example: `"attachments/34729b87cd54/store/aa08886e1e3/image.jpeg"`
   * Type: string
 * image_id
   * image data id
@@ -285,7 +285,7 @@ Content-Type: application/json
 [
   {
     "id": 1,
-    "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+    "url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
     "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
     "image_content_type": "image/jpeg"
   }
@@ -306,7 +306,7 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
@@ -335,7 +335,7 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
@@ -364,7 +364,7 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
@@ -384,7 +384,7 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
@@ -481,7 +481,7 @@ A user profile object for topotal blog
   * Type: string
 * image_url
   * Image url path
-  * Example: `"assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"`
+  * Example: `"attachments/34729b87cd54/store/aa08886e1e3/image.jpeg"`
   * Type: string
 * image_id
   * Image id
@@ -508,7 +508,7 @@ Content-Type: application/json
   "id": 1,
   "screen_name": "Topotan da Silva Santos Júnior",
   "description": "Topotan",
-  "image_url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
@@ -547,7 +547,7 @@ Content-Type: application/json
   "id": 1,
   "screen_name": "Topotan da Silva Santos Júnior",
   "description": "Topotan",
-  "image_url": "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
   "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
   "image_content_type": "image/jpeg"
 }
