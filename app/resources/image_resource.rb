@@ -11,7 +11,7 @@ module Api
         :url,
         type: String,
         description: "Image url path",
-        example: "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"
+        example: "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg"
       )
       property(
         :image_id,
@@ -73,7 +73,7 @@ module Api
       attr_reader :id, :url, :image_id, :image_content_type
       def initialize(image)
         @id = image.id
-        @url = image.url
+        @url = image.image_url
         @image_id = image.image_id
         @image_content_type = image.image_content_type
       end

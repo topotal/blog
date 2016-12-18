@@ -31,7 +31,7 @@ module Api
         :image_url,
         type: String,
         description: "Image url path",
-        example: "assets/img/upload/8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9"
+        example: "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg"
       )
 
       property(
