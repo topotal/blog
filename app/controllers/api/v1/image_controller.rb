@@ -15,7 +15,7 @@ module Api
       end
 
       get "/" do
-        headers "X-total-count" => Image.count
+        headers "X-total-count" => Image.count.to_s
         json(
           Image.order("id DESC").paginate(per_page: 20, page: params[:page]).map do |record|
             ::Api::Resources::ImageResource.new(record)
@@ -32,7 +32,6 @@ module Api
         json = parse_json_or_halt(request.body.read)
         data_uri = parse_data_url(json[:content])
         image = Image.create(image: StringIO.new(data_uri.data), image_content_type: data_uri.content_type)
-        image.url = File.join(Refile.store.directory.gsub(%r{^public/}, "/"), image.image_id)
         image.valid? ? [201, image.save && ::Api::Resources::ImageResource.new(image).to_json] : [400, image.errors.messages.to_json]
       end
 

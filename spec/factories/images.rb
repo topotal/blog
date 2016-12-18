@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :image do
-    url { Faker::File.file_name("assets/img/upload", Faker::Crypto.md5) }
     image_id { Faker::Crypto.md5 }
     image_content_type { "image/jpeg" }
     created_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
