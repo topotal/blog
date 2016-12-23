@@ -20,11 +20,12 @@ describe Api::V1::UserProfileController do
   describe "POST /" do
     let(:method) { post }
     let(:path) { "/" }
+    let(:new_user) { FactoryGirl.create(:user) }
     let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge({ content: "data:text/plain;base64,base64encodedstring" }) }
     it_should_behave_like "authorization!"
 
-    it "not increase user_profile counts" do
-      expect { post path, params.to_json, valid_header(user_profile.user.name) }.to change(UserProfile, :count).by(1)
+    it "increase user_profile counts" do
+      expect { post path, params.to_json, valid_header(new_user.name) }.to change(UserProfile, :count).by(1)
     end
 
     it "return 201 if updated" do
@@ -36,6 +37,10 @@ describe Api::V1::UserProfileController do
       post path, {}.to_json, valid_header(user_profile.user.name)
       expect(user_profile.reload).to eq user_profile
       expect(last_response.status).to eq 400
+    end
+
+    it "update if user already has profile" do
+      expect { post path, params.to_json, valid_header(user_profile.user.name) }.to change(UserProfile, :count).by(0)
     end
   end
 end
