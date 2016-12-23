@@ -24,7 +24,7 @@ module Api
         screen_name, description, content = parse_json_or_halt(request.body.read).values_at(:screen_name, :description, :content)
         data_uri = parse_data_url(content)
 
-        user_profile = UserProfile.find_or_create_by(user_id: user.id) do |profile|
+        user_profile = UserProfile.find_or_create_by(user_id: user.id).tap do |profile|
           profile.screen_name = screen_name
           profile.description = description
           profile.image = StringIO.new(data_uri.data)
