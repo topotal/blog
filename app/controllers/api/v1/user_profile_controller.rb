@@ -24,13 +24,13 @@ module Api
         screen_name, description, content = parse_json_or_halt(request.body.read).values_at(:screen_name, :description, :content)
         data_uri = parse_data_url(content)
 
-        user_profile = UserProfile.create(
-          screen_name: screen_name,
-          description: description,
-          image: StringIO.new(data_uri.data),
-          image_content_type: data_uri.content_type,
-          user_id: user.id
-        )
+        user_profile = UserProfile.find_or_create_by(user_id: user.id).tap do |profile|
+          profile.screen_name = screen_name
+          profile.description = description
+          profile.image = StringIO.new(data_uri.data)
+          profile.image_content_type = data_uri.content_type
+          profile.user_id = user.id
+        end
         json = ::Api::Resources::UserProfileResource.new(user_profile).to_json
         user_profile.valid? ? [201, user_profile.save && json] : [400, user_profile.errors.messages.to_json]
       end
