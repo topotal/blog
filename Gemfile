@@ -17,6 +17,7 @@ gem "refile-mini_magick"
 gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
+gem "nokogiri"
 
 group :production do
   gem "puma"
