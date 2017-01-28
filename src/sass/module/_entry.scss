@@ -1,6 +1,4 @@
 .entry {
-  margin-bottom: $MARGIN;
-
   header {
 
     .title {
@@ -77,7 +75,7 @@
     }
   }
 
-  .content {
+  .entryContent {
     margin-bottom: $MARGIN;
   }
 
@@ -87,6 +85,7 @@
     display: flex;
     justify-content: center;
     padding: 10px 5px;
+    margin: 0;
     box-sizing: border-box;
     flex-wrap: nowrap;
     list-style: none;

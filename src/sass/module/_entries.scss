@@ -1,7 +1,6 @@
 .entriesItem {
   width: 100%;
-  padding-left: 50px;
-  margin-bottom: $MARGIN - 20px;
+  margin-bottom: $MARGIN;
   box-sizing: border-box;
   border-bottom: 1px dotted #DDD;
 
@@ -9,18 +8,18 @@
     border: none;
   }
 
-  &:before {
-    content: "\f097";
-    font-family: FontAwesome;
-    margin: 0 0 0 -50px;
-    padding: 0;
-    position: absolute;
-    display: block;
-    font-size: 2em;
-    text-align: center;
-    width: 45px;
-    height: 45px;
-  }
+  // &:before {
+  //   content: "\f097";
+  //   font-family: FontAwesome;
+  //   margin: 0 0 0 -50px;
+  //   padding: 0;
+  //   position: absolute;
+  //   display: block;
+  //   font-size: 2em;
+  //   text-align: center;
+  //   width: 45px;
+  //   height: 45px;
+  // }
 
   .title {
     line-height: 45px;
@@ -128,7 +127,7 @@
 }
 
 .pagination {
-  margin: 0 auto $MARGIN;
+  margin: 0 auto;
   text-align: center;
 
   em {

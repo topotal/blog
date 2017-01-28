@@ -13,7 +13,7 @@ body {
 #wrapper {
   margin-top: 45px;
   min-height: 100%;
-  background-color: #FFF;
+  background-color: #ecf0f1;
 }
 
 #content {
@@ -21,20 +21,29 @@ body {
   min-height: 100%;
   max-width: $CONTENT_WIDTH;
   overflow: hidden;
-  background-color: #FFF;
-  padding: $MARGIN;
+  padding: 20px 0;
   display: flex;
   @include BORDER_BOX;
 
   #main {
-    width: 700px;
-    margin-right: 40px;
+    width: 100%;
+    margin-right: 20px;
     overflow: hidden;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border: 1px solid #DDD;
+    padding: $MARGIN;
   }
 
   #aside {
-    min-width: 300px;
+    min-width: 340px;
     width: 300px;
+    height: auto;
+    margin-bottom: auto;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border: 1px solid #DDD;
+    padding: 20px;
   }
 }
 
