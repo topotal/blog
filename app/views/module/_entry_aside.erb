@@ -2,11 +2,11 @@
   <h3>この記事を書いた人</h3>
   <p>
     <span class="icon">
-      <img src="https://pbs.twimg.com/profile_images/639689793119453184/aAyiXJuc.jpg" width="80" height="80">
+      <img src="<%= @entry.user.user_profile.image_url %>" width="80" height="80">
     </span>
-    <strong class="name">澤田 嵩善</strong>
+    <strong class="name"><%= @entry.user.user_profile.screen_name %></strong>
     <span class="detail">
-      さわだ たかよし / ICS.inc / Topotal / 名古屋市立大学デザイン情報学部卒 モノづくりをする事が楽しく、Web制作、電子工作、デザイン、映像などいろいろとやって来ました。皆さんと情報交換ができたらと思います！
+      <%= @entry.user.user_profile.description %>
     </span>
   </p>
 </div>
