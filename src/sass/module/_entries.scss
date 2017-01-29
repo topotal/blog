@@ -127,7 +127,7 @@
 }
 
 .pagination {
-  margin: 0 auto;
+  margin: 0 auto 20px;
   text-align: center;
 
   em {
@@ -160,13 +160,13 @@
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
   .entriesItem {
     padding-left: 0;
-    &:before {
-      content: "";
-      width: 20px;
-      height: 20px;
-      font-size: 1em;
-      margin: 6px 0 0 -24px;
-    }
+    // &:before {
+    //   content: "";
+    //   width: 20px;
+    //   height: 20px;
+    //   font-size: 1em;
+    //   margin: 6px 0 0 -24px;
+    // }
     .title {
       font-size: 1.2em;
       line-height: 35px;

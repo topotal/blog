@@ -21,7 +21,7 @@ body {
   min-height: 100%;
   max-width: $CONTENT_WIDTH;
   overflow: hidden;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
   @include BORDER_BOX;
 
@@ -32,12 +32,11 @@ body {
     background-color: #FFF;
     box-sizing: border-box;
     border: 1px solid #DDD;
-    padding: $MARGIN;
+    padding: 20px;
   }
 
   #aside {
-    min-width: 340px;
-    width: 300px;
+    width: 340px;
     height: auto;
     margin-bottom: auto;
     background-color: #FFF;
@@ -50,15 +49,21 @@ body {
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
   #content {
     display: block;
-    padding: 10px;
+    padding: 0;
 
     #main {
       width: 100%;
       margin-right: auto;
+      border: none;
+      padding: 10px;
     }
 
     #aside {
       width: 100%;
+      min-width: auto;
+      border: none;
+      padding: 10px;
+      box-sizing: border-box;
     }
   }
 }
