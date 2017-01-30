@@ -25,7 +25,7 @@ class IndexController < BaseController
     halt(404) unless @entry.published
 
     @entry.content = markdown.render(@entry.content) if @entry.content
-    @description = Nokogiri::HTML(@entry.content).inner_text.truncate(100)
+    @description = @entry.summarize().truncate(100)
 
     @title = @entry.title + " | YAREKASU BLOG"
     @ogp_image_url = URI::HTTP.build(

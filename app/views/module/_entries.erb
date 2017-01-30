@@ -14,7 +14,7 @@
       </div>
       <!-- ヘッドライン -->
       <div class="headline">
-        <%= Nokogiri::HTML(entry.content).inner_text.truncate(100) %>
+        <%= entry.summarize().truncate(100) %>
       </div>
     </div>
     <!-- 続きを見るボタン -->
