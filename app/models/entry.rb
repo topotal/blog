@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
   belongs_to :user, foreign_key: "user_id"
   self.per_page = 3
 
-  def summarize
-    Nokogiri::HTML(self.content).inner_text
+  def summarize_content (length=100)
+    Nokogiri::HTML(self.content).inner_text.truncate(length)
   end
 end
