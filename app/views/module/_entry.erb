@@ -6,7 +6,7 @@
     <h1 class="title"><%= @entry.title %></h1>
     <ul class="detail">
       <li class="item date"><%= @entry.publish_date.strftime("%Y-%m-%d") %></li>
-      <li class="item author"><%= @entry.user.name %></li>
+      <li class="item author"><%= @entry.user.user_profile.screen_name %></li>
     </ul>
   </header>
   <div class="eyeCatch">
