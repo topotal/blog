@@ -48,10 +48,13 @@ GEM
     method_source (0.8.2)
     mime-types (2.99.3)
     mini_magick (4.6.0)
+    mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
     mysql2 (0.3.20)
     netrc (0.11.0)
+    nokogiri (1.7.0.1)
+      mini_portile2 (~> 2.1.0)
     onkcop (0.43.0.1)
       rubocop (~> 0.43.0)
     parser (2.3.1.4)
@@ -149,6 +152,7 @@ DEPENDENCIES
   json_world
   jwt
   mysql2 (~> 0.3.20)
+  nokogiri
   onkcop
   pry
   puma

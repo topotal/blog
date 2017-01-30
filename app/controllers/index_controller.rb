@@ -24,8 +24,8 @@ class IndexController < BaseController
     @entry = Entry.find_by_id!(id)
     halt(404) unless @entry.published
 
-    @description = @entry.content.truncate(100)
     @entry.content = markdown.render(@entry.content) if @entry.content
+    @description = @entry.summarize_content
 
     @title = @entry.title + " | YAREKASU BLOG"
     @ogp_image_url = URI::HTTP.build(
