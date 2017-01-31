@@ -16,15 +16,10 @@ class IndexController < BaseController
   end
 
   get "/entry/:yyyy/:mm/:dd/:id" do |_yyyy, _mm, _dd, id|
-    markdown = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      fenced_code_blocks: true,
-      tables: true
-    )
     @entry = Entry.find_by_id!(id)
     halt(404) unless @entry.published
 
-    @entry.content = markdown.render(@entry.content) if @entry.content
+    @entry.content = @entry.render_content
     @description = @entry.summarize_content
 
     @title = @entry.title + " | YAREKASU BLOG"
