@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
   belongs_to :user, foreign_key: "user_id"
   self.per_page = 3
 
-  def decode_content
+  def render_content
     markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       fenced_code_blocks: true,
@@ -16,6 +16,6 @@ class Entry < ActiveRecord::Base
   end
 
   def summarize_content(length = 100)
-    Nokogiri::HTML(self.decode_content).inner_text.truncate(length)
+    Nokogiri::HTML(self.render_content).inner_text.truncate(length)
   end
 end

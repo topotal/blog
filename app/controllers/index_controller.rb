@@ -19,7 +19,7 @@ class IndexController < BaseController
     @entry = Entry.find_by_id!(id)
     halt(404) unless @entry.published
 
-    @entry.content = @entry.decode_content
+    @entry.content = @entry.render_content
     @description = @entry.summarize_content
 
     @title = @entry.title + " | YAREKASU BLOG"
