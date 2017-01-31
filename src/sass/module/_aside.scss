@@ -41,6 +41,7 @@ aside {
 @media screen and (max-width: $CONTENT_WIDTH - 300px) {
   aside {
     #profile {
+      width: 100%;
       margin-bottom: 0;
       p {
         .name {
