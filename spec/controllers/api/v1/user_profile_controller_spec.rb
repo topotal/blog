@@ -43,4 +43,22 @@ describe Api::V1::UserProfileController do
       expect { post path, params.to_json, valid_header(user_profile.user.name) }.to change(UserProfile, :count).by(0)
     end
   end
+
+  describe "PATCH /" do
+    let(:method) { patch }
+    let(:path) { "/" }
+    let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge({ content: "data:text/plain;base64,base64encodedstring" }) }
+    it_should_behave_like "authorization!"
+
+    it "return 201 if updated" do
+      patch path, params.to_json, valid_header(user_profile.user.name)
+      expect(last_response.status).to eq 201
+    end
+
+    it "return 201 and updated if empty parameters" do
+      patch path, {}.to_json, valid_header(user_profile.user.name)
+      expect(user_profile.reload).to eq user_profile
+      expect(last_response.status).to eq 201
+    end
+  end
 end
