@@ -51,7 +51,6 @@ module Api
         json = ::Api::Resources::UserProfileResource.new(user_profile).to_json
         user_profile.valid? ? [201, user_profile.save && json] : [400, user_profile.errors.messages.to_json]
       end
-
     end
   end
 end
