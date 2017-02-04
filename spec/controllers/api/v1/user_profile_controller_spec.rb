@@ -50,15 +50,15 @@ describe Api::V1::UserProfileController do
     let!(:params) { FactoryGirl.build(:user_profile).slice(:screen_name, :description).merge({ content: "data:text/plain;base64,base64encodedstring" }) }
     it_should_behave_like "authorization!"
 
-    it "return 201 if updated" do
+    it "return 200 if updated" do
       patch path, params.to_json, valid_header(user_profile.user.name)
-      expect(last_response.status).to eq 201
+      expect(last_response.status).to eq 200
     end
 
-    it "return 201 and updated if empty parameters" do
+    it "return 200 and updated if empty parameters" do
       patch path, {}.to_json, valid_header(user_profile.user.name)
       expect(user_profile.reload).to eq user_profile
-      expect(last_response.status).to eq 201
+      expect(last_response.status).to eq 200
     end
   end
 end
