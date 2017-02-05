@@ -55,6 +55,11 @@ describe Api::V1::UserProfileController do
       expect(last_response.status).to eq 200
     end
 
+    it "return 200 if patch update" do
+      patch path, { screen_name: "topotan", description: "update description" }.to_json, valid_header(user_profile.user.name)
+      expect(last_response.status).to eq 200
+    end
+
     it "return 200 and updated if empty parameters" do
       patch path, {}.to_json, valid_header(user_profile.user.name)
       expect(user_profile.reload).to eq user_profile
