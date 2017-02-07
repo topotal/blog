@@ -34,6 +34,23 @@ module Api
         json = ::Api::Resources::UserProfileResource.new(user_profile).to_json
         user_profile.valid? ? [201, user_profile.save && json] : [400, user_profile.errors.messages.to_json]
       end
+
+      patch "/" do
+        halt(404) unless (user = User.find_by(name: @payload["name"]))
+        user_profile = UserProfile.find_by(user_id: user.id)
+        data = parse_json_or_halt(request.body.read)
+
+        if data[:content]
+          data_uri = parse_data_url(data[:content])
+          data[:image] = StringIO.new(data_uri.data)
+          data[:image_content_type] = data_uri.content_type
+          data.delete(:content)
+        end
+
+        user_profile.update_attributes(data)
+        json = ::Api::Resources::UserProfileResource.new(user_profile).to_json
+        user_profile.valid? ? [200, user_profile.save && json] : [400, user_profile.errors.messages.to_json]
+      end
     end
   end
 end

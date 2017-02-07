@@ -69,6 +69,19 @@ module Api
         rel: "create"
       )
 
+      link(
+        :user_profiles,
+        method: "PATCH",
+        description: "User profile update",
+        path: "/api/v1/user_profiles",
+        parameters: {
+          screen_name: { example: "Topotan da Silva Santos Júnior", type: String },
+          description: { example: "Super awesome bot", type: String },
+          content: { example: "data:image/jpeg;base64,base64encodedstring......", type: String },
+        },
+        rel: "update"
+      )
+
       attr_reader :id, :screen_name, :description, :image_url, :image_id, :image_content_type, :user_id
       def initialize(user_profile)
         @id = user_profile.id
