@@ -136,6 +136,29 @@
             ]
           },
           "title": "user_profiles"
+        },
+        {
+          "description": "User profile update",
+          "href": "/api/v1/user_profiles",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "screen_name": {
+                "example": "Topotan da Silva Santos Júnior",
+                "type": "string"
+              },
+              "description": {
+                "example": "Super awesome bot",
+                "type": "string"
+              },
+              "content": {
+                "example": "data:image/jpeg;base64,base64encodedstring......",
+                "type": "string"
+              }
+            }
+          },
+          "title": "user_profiles"
         }
       ],
       "properties": {

@@ -19,6 +19,7 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
 * [UserProfile object](#userprofile-object)
   * [GET /api/v1/user_profiles](#get-apiv1user_profiles)
   * [POST /api/v1/user_profiles](#post-apiv1user_profiles)
+  * [PATCH /api/v1/user_profiles](#patch-apiv1user_profiles)
 
 ## Entry object
 A entry object of topotal blog. All APIs requirements token with `Authorization: Bearer` HTTP header.
@@ -541,6 +542,45 @@ Host: api.example.com
 
 ```
 HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": 1,
+  "screen_name": "Topotan da Silva Santos Júnior",
+  "description": "Topotan",
+  "image_url": "attachments/34729b87cd54/store/aa08886e1e3/image.jpeg",
+  "image_id": "8eb279187aba5d5196e40661e0833c777a69f6443f2aed5ae7056201abf9",
+  "image_content_type": "image/jpeg"
+}
+```
+
+### PATCH /api/v1/user_profiles
+User profile update
+
+* screen_name
+  * Example: `"Topotan da Silva Santos Júnior"`
+  * Type: string
+* description
+  * Example: `"Super awesome bot"`
+  * Type: string
+* content
+  * Example: `"data:image/jpeg;base64,base64encodedstring......"`
+  * Type: string
+
+```
+PATCH /api/v1/user_profiles HTTP/1.1
+Content-Type: application/json
+Host: api.example.com
+
+{
+  "screen_name": "Topotan da Silva Santos Júnior",
+  "description": "Super awesome bot",
+  "content": "data:image/jpeg;base64,base64encodedstring......"
+}
+```
+
+```
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
