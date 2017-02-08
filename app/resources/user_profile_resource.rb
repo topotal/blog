@@ -75,9 +75,9 @@ module Api
         description: "User profile update",
         path: "/api/v1/user_profiles",
         parameters: {
-          screen_name: { example: "Topotan da Silva Santos Júnior", type: String },
-          description: { example: "Super awesome bot", type: String },
-          content: { example: "data:image/jpeg;base64,base64encodedstring......", type: String },
+          screen_name: { example: "Topotan da Silva Santos Júnior", type: String, optional: true },
+          description: { example: "Super awesome bot", type: String, optional: true },
+          content: { example: "data:image/jpeg;base64,base64encodedstring......", type: String, optional: true },
         },
         rel: "update"
       )
