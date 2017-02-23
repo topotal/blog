@@ -18,6 +18,7 @@ gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
 gem "nokogiri"
+gem "capistrano"
 
 group :production do
   gem "puma"
