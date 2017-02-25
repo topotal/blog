@@ -19,6 +19,8 @@ gem "rake"
 gem "rack-json_schema"
 gem "nokogiri"
 gem "capistrano"
+gem "capistrano-rbenv"
+gem "capistrano-bundler"
 
 group :production do
   gem "puma"
