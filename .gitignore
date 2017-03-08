@@ -9,3 +9,4 @@ vendor
 db/*.sqlite3
 .wercker
 !.gitkeep
+log/
