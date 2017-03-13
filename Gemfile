@@ -18,10 +18,6 @@ gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
 gem "nokogiri"
-gem "capistrano"
-gem "capistrano-rbenv"
-gem "capistrano-bundler"
-gem "capistrano-puma"
 
 group :production do
   gem "puma"
@@ -42,4 +38,11 @@ group :test do
   gem "faker"
   gem "rspec", require: "rspec/core/rake_task"
   gem "database_cleaner"
+end
+
+group :deployment do
+  gem "capistrano"
+  gem "capistrano-rbenv"
+  gem "capistrano-bundler"
+  gem "capistrano-puma"
 end
