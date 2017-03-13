@@ -21,10 +21,10 @@ set :deploy_to, "/var/www/blog.topotal.com"
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files,  %w{config/database.yml config/secrets.yml config/puma.rb}
+set :linked_files, %w(config/database.yml config/secrets.yml config/puma.rb)
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets/img/upload node_modules}
+set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets/img/upload node_modules)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -33,14 +33,14 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/ass
 # set :keep_releases, 5
 
 set :ssh_options, {
-  user: ENV['REMOTE_USER'] || 'topotan',
+  user: ENV["REMOTE_USER"] || "topotan",
 }
 
 set :rbenv_type, :system
 set :rbenv_ruby, "2.3.0"
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby pumactl}
-set :bundle_flags, '--deployment --quiet --with production'
+set :rbenv_map_bins, %w(rake gem bundle ruby pumactl)
+set :bundle_flags, "--deployment --quiet --with production"
 
 namespace :deploy do
   task :chown do
@@ -55,12 +55,12 @@ namespace :deploy do
     end
   end
 
-  desc 'Runs rake db:migrate if migrations are set'
+  desc "Runs rake db:migrate if migrations are set"
   task :migrate do
     on roles(:migration) do
       within release_path do
         with rack_env: :production do
-          execute :rake, 'db:migrate'
+          execute :rake, "db:migrate"
         end
       end
     end
@@ -69,8 +69,8 @@ namespace :deploy do
   task :assets do
     on roles(:app) do
       within release_path do
-        sudo 'npm install'
-        sudo 'npm run build'
+        sudo "npm install"
+        sudo "npm run build"
       end
     end
   end
