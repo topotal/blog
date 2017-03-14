@@ -39,3 +39,10 @@ group :test do
   gem "rspec", require: "rspec/core/rake_task"
   gem "database_cleaner"
 end
+
+group :deployment do
+  gem "capistrano"
+  gem "capistrano-rbenv"
+  gem "capistrano-bundler"
+  gem "capistrano-puma"
+end

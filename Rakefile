@@ -1,5 +1,9 @@
 require "bundler/setup"
-Bundler.require(:default, :development, :test)
+if ENV['RACK_ENV'] == "production"
+  Bundler.require(:default)
+else
+  Bundler.require(:default, :development, :test)
+end
 
 require "sinatra/activerecord/rake"
 
