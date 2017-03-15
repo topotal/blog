@@ -49,4 +49,6 @@ deploy:
     - script:
         name: set permissions for ssh key
         code: chmod 0400 $HOME/.ssh/id_rsa
-    - bundle exec cap production deploy
+    - script:
+        name: cap
+        code: bundle exec cap production deploy
