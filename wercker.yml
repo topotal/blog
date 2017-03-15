@@ -35,6 +35,25 @@ build:
         name: Run test
         code: RACK_ENV=test bundle exec rake spec
 
+staging:
+  steps:
+    - script:
+        name: make .ssh directory
+        code: mkdir -p "$HOME/.ssh"
+    - create-file:
+        name: write ssh key
+        filename: $HOME/.ssh/id_rsa
+        overwrite: true
+        hide-from-log: true
+        content: $topotan_PRIVATE
+    - script:
+        name: set permissions for ssh key
+        code: chmod 0400 $HOME/.ssh/id_rsa
+    - bundle-install
+    - script:
+        name: cap
+        code: bundle exec cap staging deploy
+
 deploy:
   steps:
     - script:
