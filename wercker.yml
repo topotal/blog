@@ -45,7 +45,7 @@ deploy:
         filename: $HOME/.ssh/id_rsa
         overwrite: true
         hide-from-log: true
-        content: $WERCKER_SSH_KEY_PRIVATE
+        content: $topotan_PRIVATE
     - script:
         name: set permissions for ssh key
         code: chmod 0400 $HOME/.ssh/id_rsa
