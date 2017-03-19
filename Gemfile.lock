@@ -41,6 +41,7 @@ GEM
     diff-lcs (1.2.5)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.2.0)
     erubis (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -171,6 +172,7 @@ DEPENDENCIES
   capistrano-rbenv
   data_uri
   database_cleaner
+  dotenv
   erubis
   factory_girl
   faker

@@ -18,6 +18,7 @@ gem "data_uri"
 gem "rake"
 gem "rack-json_schema"
 gem "nokogiri"
+gem "dotenv", require: "dotenv/load"
 
 group :production do
   gem "puma"
