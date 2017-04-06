@@ -4,8 +4,8 @@ class IndexController < BaseController
   get "/" do
     @entries = Entry.where(published: true).order("id DESC").page(params[:page])
 
-    @title = "YAREKASU BLOG"
-    @description = "Topotalメンバーで運営している技術ブログ？です。「うだうだ言ってねぇでいいからやれカス。」と言われながらインフラからフロントエンドまで様々な分野のノウハウをアウトプットさせられてます。"
+    @title = "Topotal Tech Blog"
+    @description = "Topotal のメンバーがお届けする技術ブログです。"
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
@@ -22,7 +22,7 @@ class IndexController < BaseController
     @entry.content = @entry.render_content
     @description = @entry.summarize_content
 
-    @title = @entry.title + " | YAREKASU BLOG"
+    @title = @entry.title + " | Topotal Tech Blog"
     @ogp_image_url = URI::HTTP.build(
       scheme: request.scheme,
       host: request.host,
