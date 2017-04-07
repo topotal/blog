@@ -10,7 +10,7 @@ export default class GATracker {
    * @constructor
    */
   constructor() {
-    this._visitor = ua('UA-97002788-1');
+    this._visitor = ua('UA-97002788-1', {https: true});
   }
 
   /**
