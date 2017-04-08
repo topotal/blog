@@ -24,7 +24,7 @@ module Api
         :register,
         method: "POST",
         description: "User registration",
-        path: "/api/v1/users/register",
+        path: "/api/v1/users",
         parameters: {
           name: { example: "topotan", type: String },
           password: { example: "p@ssw0rd", type: String },

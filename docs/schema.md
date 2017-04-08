@@ -14,7 +14,7 @@ Topotal API v1 interface document written in JSON Hyper Schema draft v4
   * [POST /api/v1/images/:id](#post-apiv1imagesid)
   * [DELETE /api/v1/images/:id](#delete-apiv1imagesid)
 * [User object](#user-object)
-  * [POST /api/v1/users/register](#post-apiv1usersregister)
+  * [POST /api/v1/users](#post-apiv1users)
   * [POST /api/v1/users/login](#post-apiv1userslogin)
 * [UserProfile object](#userprofile-object)
   * [GET /api/v1/user_profiles](#get-apiv1user_profiles)
@@ -404,7 +404,7 @@ A user object for topotal blog
   * Example: `"topotan"`
   * Type: string
 
-### POST /api/v1/users/register
+### POST /api/v1/users
 User registration
 
 * name
@@ -415,7 +415,7 @@ User registration
   * Type: string
 
 ```
-POST /api/v1/users/register HTTP/1.1
+POST /api/v1/users HTTP/1.1
 Content-Type: application/json
 Host: api.example.com
 
